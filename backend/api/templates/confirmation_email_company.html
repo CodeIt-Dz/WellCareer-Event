@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f4f4f4;
+                color: #333;
+            }
+            .container {
+                max-width: 600px;
+                margin: 0 auto;
+                padding: 20px;
+                background-color: #ffffff;
+                border-radius: 5px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            }
+            h1 {
+                color: #2c3e50;
+            }
+            .code {
+                font-size: 24px;
+                font-weight: bold;
+                color: #3498db;
+                padding: 10px;
+                background-color: #ecf0f1;
+                border-radius: 3px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Bonjour {{company_name}},</h1>
+            <p>Merci pour votre inscription à notre service. Voici le code de confirmation pour créer le compte administrateur de votre entreprise :</p>
+            <p class="code">{{code}}</p>
+            <p>Veuillez utiliser ce code pour finaliser la création de votre compte administrateur.</p>
+            <p>Cordialement,<br>L'équipe de support</p>
+        </div>
+    </body>
+</html>

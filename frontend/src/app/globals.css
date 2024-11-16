@@ -1,0 +1,258 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 10% 3.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+    --primary-color: #591fce;
+    --primary-color-soft: #591fce91;
+    --primary-background: #f3effb;
+  }
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+@font-face {
+  font-family: "Axiforma";
+  src: url("/fonts/Axiforma-Regular.ttf") format("truetype"),
+    url("/fonts/Axiforma-Regular.eot") format("embedded-opentype"),
+    url("/fonts/Axiforma-Regular.woff") format("woff"),
+    url("/fonts/Axiforma-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Axiforma";
+  src: url("/fonts/Axiforma-Black.ttf") format("truetype"),
+    url("/fonts/Axiforma-Black.eot") format("embedded-opentype"),
+    url("/fonts/Axiforma-Black.woff") format("woff"),
+    url("/fonts/Axiforma-Black.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Axiforma";
+  src: url("/fonts/Axiforma-BlackItalic.ttf") format("truetype"),
+    url("/fonts/Axiforma-BlackItalic.eot") format("embedded-opentype"),
+    url("/fonts/Axiforma-BlackItalic.woff") format("woff"),
+    url("/fonts/Axiforma-BlackItalic.woff2") format("woff2");
+  font-weight: 900;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Axiforma";
+  src: url("/fonts/Axiforma-Bold.ttf") format("truetype"),
+    url("/fonts/Axiforma-Bold.eot") format("embedded-opentype"),
+    url("/fonts/Axiforma-Bold.woff") format("woff"),
+    url("/fonts/Axiforma-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Axiforma";
+  src: url("/fonts/Axiforma-BoldItalic.ttf") format("truetype"),
+    url("/fonts/Axiforma-BoldItalic.eot") format("embedded-opentype"),
+    url("/fonts/Axiforma-BoldItalic.woff") format("woff"),
+    url("/fonts/Axiforma-BoldItalic.woff2") format("woff2");
+  font-weight: 700;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Axiforma";
+  src: url("/fonts/Axiforma-Book.ttf") format("truetype"),
+    url("/fonts/Axiforma-Book.eot") format("embedded-opentype"),
+    url("/fonts/Axiforma-Book.woff") format("woff"),
+    url("/fonts/Axiforma-Book.woff2") format("woff2");
+  font-weight: 200;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Axiforma";
+  src: url("/fonts/Axiforma-BookItalic.ttf") format("truetype"),
+    url("/fonts/Axiforma-BookItalic.eot") format("embedded-opentype"),
+    url("/fonts/Axiforma-BookItalic.woff") format("woff"),
+    url("/fonts/Axiforma-BookItalic.woff2") format("woff2");
+  font-weight: 200;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Axiforma";
+  src: url("/fonts/Axiforma-ExtraBold.ttf") format("truetype"),
+    url("/fonts/Axiforma-ExtraBold.eot") format("embedded-opentype"),
+    url("/fonts/Axiforma-ExtraBold.woff") format("woff"),
+    url("/fonts/Axiforma-ExtraBold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Axiforma";
+  src: url("/fonts/Axiforma-ExtraBoldItalic.ttf") format("truetype"),
+    url("/fonts/Axiforma-ExtraBoldItalic.eot") format("embedded-opentype"),
+    url("/fonts/Axiforma-ExtraBoldItalic.woff") format("woff"),
+    url("/fonts/Axiforma-ExtraBoldItalic.woff2") format("woff2");
+  font-weight: 700;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Axiforma";
+  src: url("/fonts/Axiforma-Heavy.ttf") format("truetype"),
+    url("/fonts/Axiforma-Heavy.eot") format("embedded-opentype"),
+    url("/fonts/Axiforma-Heavy.woff") format("woff"),
+    url("/fonts/Axiforma-Heavy.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Axiforma";
+  src: url("/fonts/Axiforma-HeavyItalic.ttf") format("truetype"),
+    url("/fonts/Axiforma-HeavyItalic.eot") format("embedded-opentype"),
+    url("/fonts/Axiforma-HeavyItalic.woff") format("woff"),
+    url("/fonts/Axiforma-HeavyItalic.woff2") format("woff2");
+  font-weight: 800;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Axiforma";
+  src: url("/fonts/Axiforma-Italic.ttf") format("truetype"),
+    url("/fonts/Axiforma-Italic.eot") format("embedded-opentype"),
+    url("/fonts/Axiforma-Italic.woff") format("woff"),
+    url("/fonts/Axiforma-Italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Axiforma";
+  src: url("/fonts/Axiforma-Light.ttf") format("truetype"),
+    url("/fonts/Axiforma-Light.eot") format("embedded-opentype"),
+    url("/fonts/Axiforma-Light.woff") format("woff"),
+    url("/fonts/Axiforma-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Axiforma";
+  src: url("/fonts/Axiforma-LightItalic.ttf") format("truetype"),
+    url("/fonts/Axiforma-LightItalic.eot") format("embedded-opentype"),
+    url("/fonts/Axiforma-LightItalic.woff") format("woff"),
+    url("/fonts/Axiforma-LightItalic.woff2") format("woff2");
+  font-weight: 300;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Axiforma";
+  src: url("/fonts/Axiforma-Medium.ttf") format("truetype"),
+    url("/fonts/Axiforma-Medium.eot") format("embedded-opentype"),
+    url("/fonts/Axiforma-Medium.woff") format("woff"),
+    url("/fonts/Axiforma-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Axiforma";
+  src: url("/fonts/Axiforma-MediumItalic.ttf") format("truetype"),
+    url("/fonts/Axiforma-MediumItalic.eot") format("embedded-opentype"),
+    url("/fonts/Axiforma-MediumItalic.woff") format("woff"),
+    url("/fonts/Axiforma-MediumItalic.woff2") format("woff2");
+  font-weight: 500;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Axiforma";
+  src: url("/fonts/Axiforma-SemiBold.ttf") format("truetype"),
+    url("/fonts/Axiforma-SemiBold.eot") format("embedded-opentype"),
+    url("/fonts/Axiforma-SemiBold.woff") format("woff"),
+    url("/fonts/Axiforma-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Axiforma";
+  src: url("/fonts/Axiforma-SemiBoldItalic.ttf") format("truetype"),
+    url("/fonts/Axiforma-SemiBoldItalic.eot") format("embedded-opentype"),
+    url("/fonts/Axiforma-SemiBoldItalic.woff") format("woff"),
+    url("/fonts/Axiforma-SemiBoldItalic.woff2") format("woff2");
+  font-weight: 600;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Axiforma";
+  src: url("/fonts/Axiforma-Thin.ttf") format("truetype"),
+    url("/fonts/Axiforma-Thin.eot") format("embedded-opentype"),
+    url("/fonts/Axiforma-Thin.woff") format("woff"),
+    url("/fonts/Axiforma-Thin.woff2") format("woff2");
+  font-weight: 100;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Axiforma";
+  src: url("/fonts/Axiforma-ThinItalic.ttf") format("truetype"),
+    url("/fonts/Axiforma-ThinItalic.eot") format("embedded-opentype"),
+    url("/fonts/Axiforma-ThinItalic.woff") format("woff"),
+    url("/fonts/Axiforma-ThinItalic.woff2") format("woff2");
+  font-weight: 100;
+  font-style: italic;
+}
+
+
+.job_label {
+  font-size: larger;
+}
+
+.rayan-section {
+  background: linear-gradient(71.97deg, #B8FFF0 0%, #FFFFFF 71.81%);
+}
