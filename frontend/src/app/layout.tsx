@@ -38,7 +38,7 @@ export default function RootLayout({
             <NextTopLoader color="blue" showSpinner={false} />
             <Toaster />
           </header>
-          <div className="flex flex-col">
+          <div className="flex flex-col mb-10">
             <Navbar isAuthenticated={isAuthenticated}  />
             <main>{children}</main>
           </div>

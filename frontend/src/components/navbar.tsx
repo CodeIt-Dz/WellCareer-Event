@@ -19,17 +19,16 @@ export default  function Navbar( {isAuthenticated} : {isAuthenticated:boolean} )
 
 
   const navBarItems = [
-    { name: "Accueil", link: "/" },
-    { name: "Trouver un emploi", link: "/offer" },
-    { name: "Découvrir les entreprises", link: "/companies" },
-    { name: "Créer un CV professionnel", link: "/cv" },
-    { name: "Formation", link: "/courses" }
+    { name: "Home", link: "/" },
+    { name: "Services", link: "/" },
+    { name: "Domaine", link: "/" },
+    { name: "Contact Us", link: "/" },
   ]
 
   const pathname = usePathname()
 
   return (
-    <nav className="p-2 shadow-md shadow-gray-200 sticky top-0 bg-white z-50">
+    <nav className="p-2 shadow-none  top-0 bg-white z-50">
       <div className="flex items-center justify-between mx-2 sm:mx-4 lg:mx-12">
 
         <div className="flex-shrink-0 mr-4">
@@ -43,8 +42,8 @@ export default  function Navbar( {isAuthenticated} : {isAuthenticated:boolean} )
               <Link
                 key={index}
                 href={item.link}
-                className={`text-xs lg:text-sm font-medium ${
-                  pathname === item.link ? "text-primary" : "text-gray-500 hover:text-primary"
+                className={`text-lg lg:text-lg  font-bold ${
+                  pathname === item.link ? "text-black" : "text-gray-500 hover:text-primary"
                 } transition duration-300 ease-in-out whitespace-nowrap`}
               >
                 {item.name}
@@ -53,27 +52,8 @@ export default  function Navbar( {isAuthenticated} : {isAuthenticated:boolean} )
           </div>
         </div>
 
-        { !isAuthenticated ? (<div className="flex items-center gap-2 flex-shrink-0">
-          <Link href={'/'} className="hidden sm:inline-block text-xs lg:text-sm font-semibold bg-gradient-to-r from-[#22E5BB] to-[#423BCA] bg-clip-text text-transparent whitespace-nowrap">
-            Espace recruteur
-          </Link>
-          <Link href="/auth/login" passHref className="hidden sm:inline-block">
-            <Button className="text-xs lg:text-sm rounded-3xl text-white bg-gradient-to-r from-[#22E5BB] to-[#423BCA] px-2 py-1 lg:px-4 lg:py-2">
-              Se connecter
-            </Button>
-          </Link>
-          {/* Hamburger menu for mobile and tablet */}
-          <button className="xl:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Toggle menu">
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>) : (
-          <div className='flex gap-1'>
-            {/* <span> {user?.full_name} </span> */}
-          <Link href="/profile" passHref className="hidden sm:inline-block">
-            <Avatar isBordered radius="md" src="https://i.pravatar.cc/150?u=a04258114e29026302d" />
-           </Link>
-        </div>
-        )}
+        <Button size="lg" color="primary" radius="sm" className="text-md text-white font-bold px-8 py-2">Get in Touch</Button>
+
 
       </div>
 
@@ -92,16 +72,7 @@ export default  function Navbar( {isAuthenticated} : {isAuthenticated:boolean} )
               {item.name}
             </Link>
           ))}
-          <div className="mt-4 px-4 sm:hidden">
-            <Link href={'/'} className="block mb-2 text-sm font-semibold bg-gradient-to-r from-[#22E5BB] to-[#423BCA] bg-clip-text text-transparent">
-              Espace recruteur
-            </Link>
-            <Link href="/auth/signing" passHref>
-              <Button className="w-full text-sm rounded-3xl text-white bg-gradient-to-r from-[#22E5BB] to-[#423BCA]">
-                Se connecter
-              </Button>
-            </Link>
-          </div>
+          
         </div>
       )}
     </nav>
