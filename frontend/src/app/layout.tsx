@@ -3,6 +3,7 @@ import "./globals.css";
 import { Providers } from "./providers";
 // import { AvailableLanguageTag, languageTag } from "@/paraglide/runtime";
 import { useAuth } from "@/hooks/useAuth";
+import Navbar from "@/components/navbar";
 
 
 export const metadata: Metadata = {
@@ -27,7 +28,6 @@ export default function RootLayout({
     <html className="light">
       <body className="font-Axiforma">
         <Providers>
-
             <main>{children}</main>
         </Providers>
       </body>

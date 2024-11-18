@@ -4,6 +4,7 @@ import React from "react";
 import Icon from "@mdi/react";
 import {  mdiArrowBottomRight, mdiArrowLeft, mdiArrowRight, mdiBullhorn, mdiChatOutline, mdiEmoticonHappy, mdiEmoticonHappyOutline } from "@mdi/js";
 import { TabsView, TabsHead, TabsPage } from "./components/tabs";
+import Navbar from "@/components/navbar";
 
 
 
@@ -17,6 +18,8 @@ export default  function Home() {
     
     <>
       <div>
+      <Navbar/>
+
         <section
           id="home"
           className=" h-[90dvh] flex xl:mt-10"
@@ -31,7 +34,7 @@ export default  function Home() {
                         <p className="font-semibold text-gray-400 text-xl">Accompagnement Personnalisé</p>
                       </CardHeader>
                       <CardBody>
-                        <p className="text-xs text-gray-400 font-bold">selectionner, developper et a connecter les meilleurs talents avec les etnreprises a quete d'excellence.</p>
+                        <p className="text-xs text-gray-400 font-bold">selectionner, developper et a connecter les meilleurs talents avec les etnreprises a quete d excellence.</p>
                       </CardBody>
                     </Card>
                 </Card> 
@@ -70,7 +73,7 @@ export default  function Home() {
               <Button size="md"  radius="sm" className="text-medium text-primary bg-white font-bold mr-8 py-6">Get in Touch</Button>
             </div>
             <div className="w-1/2  flex mt-44 md:mt-4">
-              <Image src="/student-portrait.png" className="max-h-full" />
+              <Image src="/student-portrait.png" alt="bullhorn" className="max-h-full" />
             </div>
           </div>
         </section>
@@ -87,7 +90,7 @@ export default  function Home() {
                 <TabsPage>
                   {(activeTab) => (
                     <div className=" bg-gray-1R00 rounded-xl w-1/2">
-                      {activeTab === 0 && <div className="flex flex-col "> <div className="flex justify-center h-1/2"> <Image src="/office-worker.png" className="p-6 max-md:hidden"/>  </div> <h1 className="xl:text-4xl md:text-2xl max-md:text-medium max-md:mt-24 font-bold my-4">Gestion des Carrieres</h1> <p className="lg:text-xl max-md:text-sm max-md:align-middle text-[#8A8A8A]">selectionner, developper et a connecter les meilleurs talents avec les entreprises en quete d excellence</p></div>}
+                      {activeTab === 0 && <div className="flex flex-col "> <div className="flex justify-center h-1/2"> <Image src="/office-worker.png" alt="office" className="p-6 max-md:hidden"/>  </div> <h1 className="xl:text-4xl md:text-2xl max-md:text-medium max-md:mt-24 font-bold my-4">Gestion des Carrieres</h1> <p className="lg:text-xl max-md:text-sm max-md:align-middle text-[#8A8A8A]">selectionner, developper et a connecter les meilleurs talents avec les entreprises en quete d excellence</p></div>}
                       {activeTab === 1 && <p>Recrutement et selection</p>}
                       {activeTab === 2 && <p>Relations de travail</p>}
                       {activeTab === 3 && <p>Recrutement et selection</p>}
@@ -101,14 +104,25 @@ export default  function Home() {
         {/*mission section */}
         <section id="Mission">
           <div className="m-12 flex flex-col gap-4 mt-28 ">
-              <h1 className="hidden xl:inline text-5xl font-bold pl-1">Notre mission</h1>
-              <h1 className="xl:hidden text-xl font-semibold mx-auto">Qui sommes-nous ?</h1>
-              <div className="rounded-2xl border-1 border-primary xl:p-14 p-6 pt-2 text-sm text-[#8A8A8A]  xl:text-2xl font-bold leading-relaxed ">
-                <div className="flex justify-end text-primary"><Icon path={mdiChatOutline} size={2} /></div>
-                <p>Well Career, ent tant Qu'Organisme Prive Agree de placement, Notre Mission est de selectionner, developper et accompagner les professionnels pour qu'ils sepanouissent dans leur parcours. Grace a des processus de Recruitement Rigoureux, de Formations Ciblees et un Accompagnement Personnalise, nous aidons chaque talent a trouver sa place dans un environnement out il pourra exceller. Notre Mission est d'Etre un Partenaire de Confiance pour les Entreprises, En Repondant A Leurs Besions De compoetences Et En Assurant Un Avenir Prometteur Aux Talents que Nous placons.</p>
+            <h1 className="hidden xl:inline text-5xl font-bold pl-1">Notre mission</h1>
+            <h1 className="xl:hidden text-xl font-semibold mx-auto">Qui sommes-nous ?</h1>
+            <div className="rounded-2xl border-1 border-primary xl:p-14 p-6 pt-2 text-sm text-[#8A8A8A]  xl:text-2xl font-bold leading-relaxed ">
+              <div className="flex justify-end text-primary">
+                <Icon path={mdiChatOutline} size={2} />
               </div>
+              <p>
+                Well Career, en tant Qu&apos;Organisme Privé Agréé de placement, Notre Mission est de
+                sélectionner, développer et accompagner les professionnels pour qu&apos;ils s&apos;épanouissent
+                dans leur parcours. Grâce à des processus de Recrutement Rigoureux, de Formations
+                Ciblées et un Accompagnement Personnalisé, nous aidons chaque talent à trouver sa
+                place dans un environnement où il pourra exceller. Notre Mission est d&apos;Être un Partenaire
+                de Confiance pour les Entreprises, En Répondant À Leurs Besoins De compétences Et En
+                Assurant Un Avenir Prometteur Aux Talents que Nous plaçons.
+              </p>
+            </div>
           </div>
         </section>
+
         <section id="domaine">
           {/*Domain section */}
           <div className="mt-28 flex flex-col gap-4">
@@ -123,12 +137,12 @@ export default  function Home() {
               <Card  className="bg-white border-primary  border-1 hover:scale-105 transform transition duration-300 hover:shadow-lg hover:text-white hover:bg-primary group">
                 <CardHeader className="flex flex-col p-4 gap-8">
                   <div className="border-none rounded-xl xl:p-4 p-2 bg-[#EAE9FF] ">
-                    <Image src="/bullhorn.png"  />
+                    <Image src="/bullhorn.png"  alt="bullhorn" />
                   </div>
                   <h1 className="xl:text-3xl text-xl font-bold ">Marketing</h1>
                 </CardHeader>
                 <CardBody className="xl:p-12 p-8">
-                  lorem ipsum is simply dummy text of the printing and tpyesetting industry.lorem has been the industry's standard
+                  lorem ipsum is simply dummy text of the printing and tpyesetting industry.lorem has been the induatrys standard
                 </CardBody>
                 <CardFooter>
                   <span className="underline-offset-4 underline text-xl mx-auto text-primary font-bold group-hover:text-white">More</span>
@@ -137,12 +151,12 @@ export default  function Home() {
               <Card  className="bg-white border-primary border-1 hover:scale-105 transform transition duration-300 hover:shadow-lg hover:text-white hover:bg-primary group">
                 <CardHeader className="flex flex-col p-4 gap-8">
                   <div className="border-none rounded-xl p-4 bg-[#EAE9FF] ">
-                    <Image src="/bullhorn.png"  />
+                    <Image src="/bullhorn.png"  alt="bullhorn" />
                   </div>
                   <h1 className="xl:text-3xl text-xl font-bold ">Marketing</h1>
                 </CardHeader>
                 <CardBody className="p-12">
-                  lorem ipsum is simply dummy text of the printing and tpyesetting industry.lorem has been the industry's standard
+                  lorem ipsum is simply dummy text of the printing and tpyesetting industry.lorem has been the industrys standard
                 </CardBody>
                 <CardFooter>
                   <span className="underline-offset-4 underline text-xl mx-auto text-primary font-bold group-hover:text-white">More</span>
@@ -156,7 +170,7 @@ export default  function Home() {
                   <h1 className="text-3xl font-bold ">Marketing</h1>
                 </CardHeader>
                 <CardBody className="p-12">
-                  lorem ipsum is simply dummy text of the printing and tpyesetting industry.lorem has been the industry's standard
+                  lorem ipsum is simply dummy text of the printing and tpyesetting industry.lorem has been the industrys standard
                 </CardBody>
                 <CardFooter>
                   <span className="underline-offset-4 underline text-xl mx-auto text-primary font-bold group-hover:text-white">More</span>
