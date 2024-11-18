@@ -19,7 +19,7 @@ export default  function Home() {
       <div>
         <section
           id="home"
-          className=" h-[100dvh] flex xl:mt-14"
+          className=" h-[90dvh] flex xl:mt-10"
         >
           <div className=" hidden w-1/2 lg:flex px-8  rounded-3xl">
               <div className="flex flex-col  w-1/2 ">
@@ -35,7 +35,7 @@ export default  function Home() {
                       </CardBody>
                     </Card>
                 </Card> 
-                <Card radius="none" shadow="none" className="bg-[#EAE9FF] rounded-r-none  ">
+                <Card radius="none" shadow="none" className="bg-[#EAE9FF] rounded-r-none   ">
                   <Card shadow="none" radius="none" className="p-9 bg-white rounded-tr-xl ">
                     <Image
                     className="w-full h-auto"
@@ -44,7 +44,7 @@ export default  function Home() {
                   </Card>
                 </Card>
               </div>
-              <div className="w-1/2 h-5/6 p-3 px-8 pb-8 bg-[#EAE9FF] border-transparent rounded-3xl rounded-tl-none">
+              <div className="w-1/2  p-3 px-8 pb-8 bg-[#EAE9FF] border-transparent rounded-3xl h-full rounded-tl-none">
                 <Card radius="lg" shadow="none" className="h-full bg-primary flex justify-end">
                   <Image 
                     className=""
@@ -61,31 +61,31 @@ export default  function Home() {
               <p className="font-semibold">Qui Sommes-nous?</p>
               <p className="text-[#09090999] bg-opacity-60 text-lg ">Well Career, filiale de Well Pharma, est un Organisme Prive agree de placement de personnel fondee  en 2020, dedie a selectionner, developper et a connecter les meilleurs talents avec les entreprises en quete excellence</p>
             </div>
-            <Button size="lg" color="primary" radius="sm" className="text-3xl text-white font-bold w-1/3 p-8">Get in Touch</Button>
+            <Button size="lg" color="primary" radius="sm" className="text-3xl lg:text-xl lg:p-6 text-white font-bold w-1/3 p-8">Get in Touch</Button>
           </div>
           {/*mobile hero*/}
-          <div className="lg:hidden bg-primary w-full flex">
-            <div className="w-1/2 text-white text-xl font-bold flex flex-col ml-10 gap-14 mt-44 ">
+          <div className="lg:hidden bg-primary   w-full flex">
+            <div className="w-1/2 text-white text-3xl font-bold flex flex-col ml-10 gap-14 mt-44 md:mt-24 ">
               <p>Step into Our Salon and Transform Your Future!</p>
-              <Button size="md"  radius="sm" className="text-sm text-primary bg-white font-bold mr-8 py-6">Get in Touch</Button>
+              <Button size="md"  radius="sm" className="text-medium text-primary bg-white font-bold mr-8 py-6">Get in Touch</Button>
             </div>
-            <div className="w-1/2 flex mt-44">
-              <Image src="/student-portrait.png" />
+            <div className="w-1/2  flex mt-44 md:mt-4">
+              <Image src="/student-portrait.png" className="max-h-full" />
             </div>
           </div>
         </section>
-        <div className="hidden p-8 mt-28">
+        <div className="hidden md:inline p-8  mt-28">
         <TabsView >
           {/* Tab Header */}
           <div className="flex ">
-            <TabsHead tabs={["Gestion des carrieres", "Recrutement et selection", "Relations de travail","Insertion professionnelle"]} className="mb-8 ml-3 mr-8 w-1/2" />
+            <TabsHead tabs={["Gestion des carrieres", "Recrutement et selection", "Relations de travail","Insertion professionnelle"]} className="mb-8 ml-12 mr-8 w-1/2" />
 
             {/* Tab Content */}
             
             <TabsPage>
               {(activeTab) => (
                 <div className=" bg-gray-1R00 rounded-xl w-1/2">
-                  {activeTab === 0 && <div className="flex flex-col"> <div className="flex justify-center h-1/2"> <Image src="/office-worker.png" className="p-6"/>  </div> <h1 className="text-4xl font-bold my-4">Gestion des Carrieres</h1> <p className="text-xl text-[#8A8A8A]">selectionner, developper et a connecter les meilleurs talents avec les entreprises en quete d excellence</p></div>}
+                  {activeTab === 0 && <div className="flex flex-col"> <div className="flex justify-center h-1/2"> <Image src="/office-worker.png" className="p-6"/>  </div> <h1 className="xl:text-4xl md:text-2xl font-bold my-4">Gestion des Carrieres</h1> <p className="text-xl text-[#8A8A8A]">selectionner, developper et a connecter les meilleurs talents avec les entreprises en quete d excellence</p></div>}
                   {activeTab === 1 && <p>Recrutement et selection</p>}
                   {activeTab === 2 && <p>Relations de travail</p>}
                   {activeTab === 3 && <p>Recrutement et selection</p>}
@@ -112,7 +112,7 @@ export default  function Home() {
             </div>
           </div>
           <div className="flex xl:flex-nowrap flex-wrap justify-around gap-4 mx-12">
-            <Card  className="bg-white border-primary border-1 hover:scale-105 transform transition duration-300 hover:shadow-lg hover:text-white hover:bg-primary group">
+            <Card  className="bg-white border-primary  border-1 hover:scale-105 transform transition duration-300 hover:shadow-lg hover:text-white hover:bg-primary group">
               <CardHeader className="flex flex-col p-4 gap-8">
                 <div className="border-none rounded-xl xl:p-4 p-2 bg-[#EAE9FF] ">
                   <Image src="/bullhorn.png"  />
@@ -156,8 +156,8 @@ export default  function Home() {
             </Card>
           </div>
         </div>
-        <div className="xl:m-12 xl:p-20 p-8 bg-primary xl:flex-row flex-wrap-reverse flex xl:rounded-3xl mt-28">
-          <div className="xl:hidden flex">
+        <div className="xl:m-12 xl:p-20 p-8 bg-primary lg:flex-row flex-wrap-reverse flex xl:rounded-3xl mt-28">
+          <div className="lg:hidden flex w-full justify-center">
             <Button size="md"  radius="sm" className="text-xl bg-white text-primary font-bold p-4 mt-16">Get in Touch</Button>
             <Image
               src="/arrow.png"
@@ -166,10 +166,10 @@ export default  function Home() {
             />
           </div>
           <p className=" xl:hidden  text-md text-center mt-4  text-white">Well Career, filiale de Well Pharma, est un Organisme Prive agree de placement de personnel fondee  en 2020, dedie a selectionner, developper et a connecter les meilleurs talents avec les entreprises en quete excellence </p>
-          <div className="xl:w-1/2 w-full xl:h-auto h-64 p-4">
-            <div className="grid grid-cols-5 grid-rows-1 h-full relative  xl:px-12 px-8 ">
+          <div className="lg:w-1/2 w-full xl:h-auto  h-64 p-4">
+            <div className="grid grid-cols-5 grid-rows-1 h-full mx-auto lg:w-5/6 sm:w-4/6 md:w-3/6 w-5/6 2xl:w-1/2  relative  ">
               <div className="h-1/2  bg-white rounded-3xl rounded-t-[34px] border-transparent self-end"></div>
-              <div className="col-span-2 "></div>
+              <div className="col-span-2  "></div>
               <div className="flex-col ">
                 <div className="bg-white h-1/5">
                   <div className="bg-primary h-full rounded-br-3xl"></div>
@@ -180,17 +180,17 @@ export default  function Home() {
               <div className="hidden xl:inline absolute bottom-0  z-10  ">
                 <Image
                   src="/footer-student.png"
-                  width={560}
-                  height={380} // Specify height for better rendering
+                  width={520}
+                  height={340} // Specify height for better rendering
                   alt="Footer Student"
                   className="rounded-3xl max-w-none"
                 />
 
-                <div className="border-3 border-white  text-white  rounded-full absolute z-10 -top-28 left-12 py-2 px-4 text-3xl flex items-center gap-2 font-bold "><Icon path={mdiEmoticonHappy} size={2} /> New Experiernce</div>
+                <div className="border-3 border-white  text-white  rounded-full absolute z-10 2xl:-top-16 -top-28 left-12 py-2 px-4 text-2xl flex items-center gap-2 font-bold "><Icon path={mdiEmoticonHappy} size={2} /> New Experiernce</div>
               
               </div>
               {/*for mobile */}
-              <div className="xl:hidden absolute bottom-0  z-10">
+              <div className="xl:hidden absolute bottom-0 sm:ml-8 md:ml-6 z-10">
                 <Image
                   src="/footer-student.png"
                   width={280}
@@ -198,14 +198,14 @@ export default  function Home() {
                   alt="footer student"
                   className="max-w-none rounded-3xl"
                 />
-                <div className="border-3 border-white  text-white  rounded-full absolute z-10 -top-14 left-8 py-1 px-2  flex items-center gap-1 font-bold "><Icon path={mdiEmoticonHappy} size={1} /> New Experiernce</div>
+                <div className="border-3 border-white  text-white  rounded-full absolute z-10 max-sm:text-xs  -top-14 left-8 py-1 px-2  flex items-center gap-1 font-bold "><Icon path={mdiEmoticonHappy} size={1} /> New Experiernce</div>
               </div>
             </div>
           </div>
-          <div className="xl:w-1/2 p-4">
-            <h1 className="xl:text-4xl text-xl text-white font-bold leading-[1.8] mb-8 text-center">Step into Our Salon and Transform Your Future!</h1>
+          <div className="lg:w-1/2 w-full p-4">
+            <h1 className="lg:text-4xl text-xl  text-white font-bold leading-[1.8] mb-8 text-center">Step into Our Salon and Transform Your Future!</h1>
             <p className="hidden xl:inline  text-lg  text-white">Well Career, filiale de Well Pharma, est un Organisme Prive agree de placement de personnel fondee  en 2020, dedie a selectionner, developper et a connecter les meilleurs talents avec les entreprises en quete excellence </p>
-            <div className="hidden xl:flex">
+            <div className="hidden lg:flex">
               <Button size="lg"  radius="sm" className="text-3xl bg-white text-primary font-bold p-8 mt-20">Get in Touch</Button>
               <Image
                 src="/arrow.png"
