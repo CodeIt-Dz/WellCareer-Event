@@ -7,9 +7,9 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <div className='p-16 bg-primary flex flex-col gap-10' >
-      <div className=''><p className='text-4xl text-white font-bold  shadow-sm'>Well Career</p> </div>
-      <div className='flex justify-end gap-8 text-[#CBE8FF]'>
+    <div className='xl:p-16 p-10 xl:bg-primary bg-white flex flex-col gap-10' >
+      <div className=''><p className='text-2xl xl:text-white text-primary font-bold  shadow-sm'>Well Career</p> </div>
+      <div className='flex justify-end gap-8 xl:text-[#CBE8FF] text-primary '>
         <Link href={"/"}>
           <Icon path={mdiFacebook} size={1.8} />
         </Link>
@@ -23,7 +23,7 @@ const Footer = () => {
           <Icon path={mdiGooglePlus} size={1.8} />
         </Link>
       </div>
-      <div className='text-2xl text-white font-light'><p>© Copyright Wellpharma 2024 Tous droits réservés</p></div>
+      <div className='xl:text-xl text-sm xl:text-white text-primary font-light'><p>© Copyright Wellpharma 2024 Tous droits réservés</p></div>
 
       
     </div>

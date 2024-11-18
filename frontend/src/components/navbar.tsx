@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation"
 import Link from "next/link"
 import { Button } from "@nextui-org/react"
 import { Menu, X } from 'lucide-react'
-import {Avatar} from "@nextui-org/react";
+import {Avatar,Image} from "@nextui-org/react";
 
 
 
@@ -28,11 +28,16 @@ export default  function Navbar( {isAuthenticated} : {isAuthenticated:boolean} )
   const pathname = usePathname()
 
   return (
-    <nav className="p-2 shadow-none  top-0 bg-white z-50">
+    <nav className="p-2 shadow-none  top-0 bg-primary xl:bg-white z-50">
       <div className="flex items-center justify-between mx-2 sm:mx-4 lg:mx-12">
 
-        <div className="flex-shrink-0 mr-4">
+        <div className="hidden xl:flex-shrink-0 mr-4 ">
           <Logo />
+        </div>
+        <div className='mr-4 '>
+          <Link href="/">
+            <Image src="/logo.svg" alt="logo" width={200}  />
+          </Link>
         </div>
 
         {/* Desktop menu */}
@@ -43,7 +48,7 @@ export default  function Navbar( {isAuthenticated} : {isAuthenticated:boolean} )
                 key={index}
                 href={item.link}
                 className={`text-lg lg:text-lg  font-bold ${
-                  pathname === item.link ? "text-black" : "text-gray-500 hover:text-primary"
+                  pathname === item.link ? "text-black" : "text-gray-500  hover:text-primary"
                 } transition duration-300 ease-in-out whitespace-nowrap`}
               >
                 {item.name}
@@ -52,9 +57,15 @@ export default  function Navbar( {isAuthenticated} : {isAuthenticated:boolean} )
           </div>
         </div>
 
-        <Button size="lg" color="primary" radius="sm" className="text-md text-white font-bold px-8 py-2">Get in Touch</Button>
+        <Button size="lg" color="primary" radius="sm" className="hidden lg:inline text-md text-white font-bold px-8 py-2">Get in Touch</Button>
 
-
+        <div className="flex items-center gap-2 flex-shrink-0">
+          
+          {/* Hamburger menu for mobile and tablet */}
+          <button className="xl:hidden text-white" onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Toggle menu">
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile and tablet menu */}
@@ -65,13 +76,15 @@ export default  function Navbar( {isAuthenticated} : {isAuthenticated:boolean} )
               key={index}
               href={item.link}
               className={`block py-2 px-4 text-sm font-medium ${
-                pathname === item.link ? "text-primary" : "text-gray-500 hover:text-primary"
+                pathname === item.link ? "text-black" : "text-gray-500 hover:text-white"
               } transition duration-300 ease-in-out`}
               onClick={() => setIsMenuOpen(false)}
             >
               {item.name}
             </Link>
+            
           ))}
+          <Button size="lg"  radius="sm" className=" lg:hidden text-md text-primary bg-white font-bold px-6 mt-4 ">Get in Touch</Button>
           
         </div>
       )}
