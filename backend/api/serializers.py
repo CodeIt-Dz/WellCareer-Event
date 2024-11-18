@@ -3,6 +3,11 @@ from .models import *
 from .utils import clean_user_data
 from .needed_serializer import CompanyOfferDetailSerializer
 
+class StudentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Student
+        fields = '__all__'
+
 class ProfileSerializer(serializers.ModelSerializer):
       class Meta:
             model = Profile

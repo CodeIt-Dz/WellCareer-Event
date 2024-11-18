@@ -34,15 +34,8 @@ export default function RootLayout({
     <html className="light">
       <body className="font-Axiforma">
         <Providers>
-          <header>
-            <NextTopLoader color="blue" showSpinner={false} />
-            <Toaster />
-          </header>
-          <div className="flex flex-col">
-            <Navbar isAuthenticated={isAuthenticated}  />
+         
             <main>{children}</main>
-          </div>
-          <Footer />
         </Providers>
       </body>
     </html>
