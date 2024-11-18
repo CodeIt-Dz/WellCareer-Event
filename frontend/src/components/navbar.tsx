@@ -11,7 +11,7 @@ import {Avatar,Image} from "@nextui-org/react";
 
 
 
-export default  function Navbar( {isAuthenticated} : {isAuthenticated:boolean} ) {
+export default  function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   
@@ -19,11 +19,11 @@ export default  function Navbar( {isAuthenticated} : {isAuthenticated:boolean} )
 
 
   const navBarItems = [
-    { name: "Home", link: "/" },
-    { name: "Services", link: "/" },
-    { name: "Domaine", link: "/" },
-    { name: "Contact Us", link: "/" },
-  ]
+    { name: "Home", link: "#home" },
+    { name: "Services", link: "#services" },
+    { name: "Domaine", link: "#domaine" },
+    { name: "Contact Us", link: "#contact" },
+  ];
 
   const pathname = usePathname()
 

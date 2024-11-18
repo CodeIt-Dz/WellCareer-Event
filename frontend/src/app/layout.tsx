@@ -39,7 +39,7 @@ export default function RootLayout({
             <Toaster />
           </header>
           <div className="flex flex-col xl:mb-10">
-            <Navbar isAuthenticated={isAuthenticated}  />
+            <Navbar   />
             <main>{children}</main>
           </div>
           <Footer />
