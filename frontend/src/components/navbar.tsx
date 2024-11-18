@@ -11,7 +11,7 @@ import {Avatar,Image} from "@nextui-org/react";
 
 
 
-export default  function Navbar( {isAuthenticated} : {isAuthenticated:boolean} ) {
+export default  function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   
@@ -19,16 +19,16 @@ export default  function Navbar( {isAuthenticated} : {isAuthenticated:boolean} )
 
 
   const navBarItems = [
-    { name: "Home", link: "/" },
-    { name: "Services", link: "/" },
-    { name: "Domaine", link: "/" },
-    { name: "Contact Us", link: "/" },
-  ]
+    { name: "Home", link: "#home" },
+    { name: "Services", link: "#services" },
+    { name: "Domaine", link: "#domaine" },
+    { name: "Contact Us", link: "#contact" },
+  ];
 
   const pathname = usePathname()
 
   return (
-    <nav className="p-2 shadow-none  top-0 bg-primary xl:bg-white z-50">
+    <nav className="p-2 shadow-none  top-0 bg-primary lg:bg-white z-50">
       <div className="flex items-center justify-between mx-2 sm:mx-4 lg:mx-12">
 
         <div className="hidden xl:flex-shrink-0 mr-4 ">
@@ -41,7 +41,7 @@ export default  function Navbar( {isAuthenticated} : {isAuthenticated:boolean} )
         </div>
 
         {/* Desktop menu */}
-        <div className="hidden xl:flex flex-grow items-center">
+        <div className="hidden lg:flex flex-grow items-center">
           <div className="flex items-center justify-center w-full mx-2 space-x-4 lg:space-x-8">
             {navBarItems.map((item, index) => (
               <Link
@@ -62,7 +62,7 @@ export default  function Navbar( {isAuthenticated} : {isAuthenticated:boolean} )
         <div className="flex items-center gap-2 flex-shrink-0">
           
           {/* Hamburger menu for mobile and tablet */}
-          <button className="xl:hidden text-white" onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Toggle menu">
+          <button className="lg:hidden text-white" onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Toggle menu">
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
@@ -70,7 +70,7 @@ export default  function Navbar( {isAuthenticated} : {isAuthenticated:boolean} )
 
       {/* Mobile and tablet menu */}
       {isMenuOpen && (
-        <div className="xl:hidden mt-4 pb-4">
+        <div className="lg:hidden mt-4 pb-4">
           {navBarItems.map((item, index) => (
             <Link
               key={index}
