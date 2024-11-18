@@ -26,7 +26,12 @@ SECRET_KEY = 'django-insecure-z9zr#!h2k7gfps!-o#z-**qrh+qv6jgz1we9y$sq8sya+on705
 DEBUG = True
 
 
-ALLOWED_HOSTS = ['86.38.217.190','127.0.0.1','localhost','pharma-back.codeitdz.com','career.wellpharmagroup.com','172.20.10.3','192.168.248.7','docker-back-1']# add front url
+ALLOWED_HOSTS = ['86.38.217.190','127.0.0.1',
+                 'localhost','pharma-back.codeitdz.com',
+                 'career.wellpharmagroup.com',
+                 '172.20.10.3','192.168.248.7','docker-back-1'
+                 "backend-career.wellpharmagroup.com"
+                 ]# add front url
 
 
 
@@ -36,12 +41,14 @@ CORS_ALLOWED_ORIGINS = [
     "https://pharma-back.codeitdz.com",
     "https://career.wellpharmagroup.com",
     "http://localhost:3000",
+    "https://backend-career.wellpharmagroup.com"
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     "https://pharma-back.codeitdz.com",
     "https://career.wellpharmagroup.com",
     "http://localhost:3000",
+    "https://backend-career.wellpharmagroup.com"
 ]
 
 INSTALLED_APPS = [
