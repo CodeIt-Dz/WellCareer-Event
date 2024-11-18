@@ -1,14 +1,9 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
-import NextTopLoader from "nextjs-toploader";
-import Navbar from "@/components/navbar";
 // import { AvailableLanguageTag, languageTag } from "@/paraglide/runtime";
-import { Toaster } from "react-hot-toast";
-import Footer from "./(Sidebar)/Components/footer";
 import { useAuth } from "@/hooks/useAuth";
-import { getSession } from "@/data/session";
+import Navbar from "@/components/navbar";
 
 
 export const metadata: Metadata = {
@@ -30,11 +25,9 @@ export default function RootLayout({
   const { isAuthenticated } = useAuth() ;
 
   return (
-    // <html lang={languageTag()} dir={direction[languageTag()]} className="light">
     <html className="light">
       <body className="font-Axiforma">
         <Providers>
-         
             <main>{children}</main>
         </Providers>
       </body>

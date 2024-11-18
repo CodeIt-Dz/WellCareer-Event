@@ -17,12 +17,12 @@ export async function middleware(request: NextRequest) {
   const isAuthRoute = () => authRoutes.includes(pathname)
   const isProtectedRoute = () => protectedRoutes.includes(pathname)
 
-  if (access && isAuthRoute()) {
-    return NextResponse.redirect(new URL("/", request.url));
-  }
-  if (!access && isProtectedRoute()) {
-    return NextResponse.redirect(new URL("/auth/login", request.url));
-  }
+  // if (access && isAuthRoute()) {
+  //   return NextResponse.redirect(new URL("/", request.url));
+  // }
+  // if (!access && isProtectedRoute()) {
+  //   return NextResponse.redirect(new URL("/auth/login", request.url));
+  // }
 
   return NextResponse.next();
 }
