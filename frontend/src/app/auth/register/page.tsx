@@ -1,11 +1,8 @@
-import { RegisterForm } from "@/components/auth/register-form";
-import { Suspense } from "react";
+import EventRegisterForm from "@/components/auth/event-register-form";
 
 const RegisterPage = () => {
     return ( 
-        <Suspense fallback="Loading...">
-            <RegisterForm />
-        </Suspense>
+            <EventRegisterForm/>
      );
 }
  
