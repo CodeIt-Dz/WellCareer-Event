@@ -15,7 +15,7 @@ class StudentViewSet(viewsets.ModelViewSet):
 
     def create(self, request, *args, **kwargs):
         # Save the student to the database
-        print("request.data",request)
+        print("request.data", request)
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
@@ -51,6 +51,9 @@ class StudentViewSet(viewsets.ModelViewSet):
             workbook = load_workbook(file_path)
             sheet = workbook.active
 
+        # Extract relative path for the CV file
+        cv_file = student_data.get('cv')  # This is typically the relative path already saved by Django
+
         # Append the new student data
         sheet.append([
             student_data.get('first_name'),
@@ -61,7 +64,7 @@ class StudentViewSet(viewsets.ModelViewSet):
             student_data.get('major'),
             student_data.get('education_level'),
             ", ".join(student_data.get('professional_interests', [])),  # Convert JSON to a string
-            student_data.get('cv')  # Add CV file path
+            cv_file  # Save only the relative path
         ])
 
         # Save the workbook to the file
