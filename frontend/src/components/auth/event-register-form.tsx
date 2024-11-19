@@ -149,6 +149,8 @@ export default function EventRegisterForm() {
       );
 
       console.log(response)
+
+      router.push('/')
   
       if (response?.status === 200) {
         console.log("Submission successful:", response.data);
