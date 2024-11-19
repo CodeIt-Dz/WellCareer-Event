@@ -130,3 +130,20 @@ export async function removeLanguageFromEmploye(userId: string, hobbyId: string)
         // Handle the error (e.g., show a notification)
     }
 }
+
+
+export async function sendDataToBackend(formdata: FormData) {
+    try {
+        // Await the response to ensure it resolves before continuing
+        const response = await axios.post(`${BASE_URL}/students/`, formdata, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            }
+        });
+
+        return response;
+    } catch (error) {
+        console.error("Error sending form data:", error);
+        throw error; // Re-throw the error to be caught by the calling function
+    }
+}

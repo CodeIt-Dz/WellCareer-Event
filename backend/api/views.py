@@ -6,6 +6,8 @@ from rest_framework import viewsets, status
 from rest_framework.response import Response
 from django.conf import settings
 from .serializers import StudentSerializer
+from rest_framework.parsers import MultiPartParser, FormParser
+
 
 class StudentViewSet(viewsets.ModelViewSet):
     queryset = Student.objects.all()
@@ -13,6 +15,7 @@ class StudentViewSet(viewsets.ModelViewSet):
 
     def create(self, request, *args, **kwargs):
         # Save the student to the database
+        print("request.data",request)
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
@@ -58,7 +61,7 @@ class StudentViewSet(viewsets.ModelViewSet):
             student_data.get('major'),
             student_data.get('education_level'),
             ", ".join(student_data.get('professional_interests', [])),  # Convert JSON to a string
-            student_data.get('cv'),  # Add CV file path
+            student_data.get('cv')  # Add CV file path
         ])
 
         # Save the workbook to the file

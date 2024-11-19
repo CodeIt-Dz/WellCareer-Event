@@ -15,12 +15,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover"
-import { CalendarIcon, CheckIcon } from 'lucide-react'
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { format } from "date-fns"
@@ -28,6 +22,8 @@ import { cn } from "@/lib/utils"
 import { Backend } from '@/lib/helper'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import { CheckIcon } from 'lucide-react'
+import { sendDataToBackend } from '@/data/profile'
 
 const personalInfoSchema = z.object({
   last_name: z.string().min(2, "Le nom doit contenir au moins 2 caractères"),
@@ -35,9 +31,9 @@ const personalInfoSchema = z.object({
   phone_number: z.string().min(10, "Le numéro de téléphone doit contenir au moins 10 chiffres").regex(/^[0-9]*$/, "Doit contenir uniquement des chiffres"),
   gender: z.enum(["Male", "Female"]),
   birth_date: z.object({
-    day: z.string(),
-    month: z.string(),
-    year: z.string(),
+    day: z.string().min(1, "Jour requis"),
+    month: z.string().min(1, "Mois requis"),
+    year: z.string().min(4, "Année requise"),
   }),
   email: z.string().email({
     message: "Email invalide"
@@ -48,12 +44,9 @@ const professionalInfoSchema = z.object({
   major: z.string().min(1, "Veuillez sélectionner un domaine d'études"),
   education_level: z.string().min(1, "Veuillez sélectionner un niveau d'études"),
   professional_interests: z.array(z.string()).nonempty("Veuillez sélectionner au moins un domaine d'intérêt"),
-  cv: z.instanceof(File).optional().refine((file) => {
-    if (file) {
-      return file.size <= 5 * 1024 * 1024; // 5MB limit
-    }
-    return true;
-  }, "Le fichier CV ne doit pas dépasser 5MB"),
+  cv: z.instanceof(File).refine((file) => file.type === 'application/pdf', {
+    message: "Le fichier doit être au format PDF",
+  }),
 })
 
 type PersonalInfoFormData = z.infer<typeof personalInfoSchema>
@@ -108,9 +101,9 @@ export default function EventRegisterForm() {
       phone_number: "",
       gender: undefined,
       birth_date: {
-        day: "",
-        month: "",
-        year: "",
+        day: '',
+        month: '',
+        year: '',
       },
     },
   })
@@ -130,47 +123,43 @@ export default function EventRegisterForm() {
     setStep(2)
   }
 
-  const onSubmitProfessionalInfo = async (tdata: ProfessionalInfoFormData) => {
-    const formattedDate = personalInfo?.birth_date
-      ? `${personalInfo.birth_date.year}-${personalInfo.birth_date.month.padStart(2, '0')}-${personalInfo.birth_date.day.padStart(2, '0')}`
-      : null;
-      console.log("Formatted Date", formattedDate )
-    try {
-      const finalData = new FormData();
-      finalData.append('last_name', personalInfo?.last_name || "");
-      finalData.append('first_name', personalInfo?.first_name || "");
-      finalData.append('phone_number', personalInfo?.phone_number || "");
-      finalData.append('gender', personalInfo?.gender || "");
-      finalData.append('birth_date', formattedDate || "");
-      finalData.append('email', personalInfo?.email || "");
-      finalData.append('major', tdata?.major || "");
-      finalData.append('education_level', tdata?.education_level || "");
-      tdata?.professional_interests.forEach((interest, index) => {
-        finalData.append(`professional_interests[${index}]`, interest);
-      });
-      if (tdata.cv) {
-        finalData.append('cv', tdata.cv);
-      }
 
-      console.log("Form submitted:", Object.fromEntries(finalData));
+  const [submissionInProgress, setSubmissionInProgress] = useState(false)
+const onSubmitProfessionalInfo = async (data: ProfessionalInfoFormData) => {
+  if (submissionInProgress) return // Prevent multiple submissions
 
-      const response = await Backend.post("/students/", 
-        {
-          body: finalData
-        }
-      );
+  setSubmissionInProgress(true) // Set flag to true to prevent multiple submissions
 
-      router.push('/')
-      if (response?.status === 200) {
-        console.log("Submission successful:", response.data);
-        router.push('/')
-      } else {
-        console.warn("Unexpected response status:", response.status);
-      }
-    } catch (error: any) {
-      router.push('/')
-    }
-  };
+  const formattedDate = personalInfo?.birth_date
+    ? `${personalInfo.birth_date.year}-${personalInfo.birth_date.month.padStart(2, '0')}-${personalInfo.birth_date.day.padStart(2, '0')}`
+    : null;
+
+  const finalData = new FormData();
+  finalData.append('first_name', personalInfo?.first_name || "");
+  finalData.append('last_name', personalInfo?.last_name || "");
+  finalData.append('phone_number', personalInfo?.phone_number || "");
+  finalData.append('gender', personalInfo?.gender || "");
+  finalData.append('birth_date', formattedDate || "");
+  finalData.append('email', personalInfo?.email || "");
+  finalData.append('major', data.major);
+  finalData.append('education_level', data.education_level);
+  finalData.append('professional_interests', JSON.stringify(data.professional_interests));
+  console.log(data.cv);
+  finalData.append('cv', data.cv);
+
+  try {
+    await sendDataToBackend(finalData)
+    router.push('/')
+  } 
+  catch (error) {
+    console.error('Error submitting data:', error)
+    // Handle error (e.g., show error message to user)
+  } finally {
+    setSubmissionInProgress(false) // Reset flag
+  }
+};
+
+  
 
   return (
     <div className='h-full w-full bg-primary p-6'>
@@ -313,7 +302,7 @@ export default function EventRegisterForm() {
                               </FormControl>
                               <SelectContent>
                                 {Array.from({ length: 12 }, (_, i) => i + 1).map((month) => (
-                                  <SelectItem key={month} value={month.toString()}>{month}</SelectItem>
+                                  <SelectItem key={month} value={month.toString()}>{format(new Date(2000, month - 1), 'MMMM')}</SelectItem>
                                 ))}
                               </SelectContent>
                             </Select>
@@ -373,10 +362,8 @@ export default function EventRegisterForm() {
                             </FormItem>
                           )}
                         />
-                        <div className='hidden'>
-
+                        
                         <FormField
-                       
                           control={professionalInfoForm.control}
                           name="education_level"
                           render={({ field }) => (
@@ -387,7 +374,7 @@ export default function EventRegisterForm() {
                                   <SelectTrigger>
                                     <SelectValue placeholder="Sélectionnez votre niveau" />
                                   </SelectTrigger>
-                </FormControl>
+                                </FormControl>
                                 <SelectContent>
                                   {educationLevels.map((level) => (
                                     <SelectItem key={level} value={level}>{level}</SelectItem>
@@ -398,26 +385,25 @@ export default function EventRegisterForm() {
                             </FormItem>
                           )}
                         />
-                                                </div>
-
                       </div>
                     </div>
 
+                    <div className='hidden'>
                     <FormField
                           control={professionalInfoForm.control}
-                          name="education_level"
+                          name="major"
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel>Niveau d&apos;études</FormLabel>
+                              <FormLabel>Domaine d&apos;études (Major)</FormLabel>
                               <Select onValueChange={field.onChange} defaultValue={field.value}>
                                 <FormControl>
                                   <SelectTrigger>
-                                    <SelectValue placeholder="Sélectionnez votre niveau" />
+                                    <SelectValue placeholder="Sélectionnez votre domaine" />
                                   </SelectTrigger>
-                </FormControl>
+                                </FormControl>
                                 <SelectContent>
-                                  {educationLevels.map((level) => (
-                                    <SelectItem key={level} value={level}>{level}</SelectItem>
+                                  {majors.map((major) => (
+                                    <SelectItem key={major} value={major}>{major}</SelectItem>
                                   ))}
                                 </SelectContent>
                               </Select>
@@ -425,10 +411,11 @@ export default function EventRegisterForm() {
                             </FormItem>
                           )}
                         />
+                    </div>
                     
                     <div>
                       <h3 className="text-lg font-medium mb-4">
-                        intérêt professionnel
+                        Intérêt professionnel
                       </h3>
                       <FormField
                         control={professionalInfoForm.control}
@@ -468,23 +455,116 @@ export default function EventRegisterForm() {
                         )}
                       />
                     </div>
+                    <div className='hidden'>
+                    <FormField
+                          control={professionalInfoForm.control}
+                          name="major"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Domaine d&apos;études (Major)</FormLabel>
+                              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                <FormControl>
+                                  <SelectTrigger>
+                                    <SelectValue placeholder="Sélectionnez votre domaine" />
+                                  </SelectTrigger>
+                                </FormControl>
+                                <SelectContent>
+                                  {majors.map((major) => (
+                                    <SelectItem key={major} value={major}>{major}</SelectItem>
+                                  ))}
+                                </SelectContent>
+                              </Select>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                    </div>
+
+                    <div className='hidden'>
+                    <FormField
+                          control={professionalInfoForm.control}
+                          name="major"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Domaine d&apos;études (Major)</FormLabel>
+                              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                <FormControl>
+                                  <SelectTrigger>
+                                    <SelectValue placeholder="Sélectionnez votre domaine" />
+                                  </SelectTrigger>
+                                </FormControl>
+                                <SelectContent>
+                                  {majors.map((major) => (
+                                    <SelectItem key={major} value={major}>{major}</SelectItem>
+                                  ))}
+                                </SelectContent>
+                              </Select>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                    </div>
+                    <div className='hidden'>
+                    <FormField
+                          control={professionalInfoForm.control}
+                          name="major"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Domaine d&apos;études (Major)</FormLabel>
+                              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                <FormControl>
+                                  <SelectTrigger>
+                                    <SelectValue placeholder="Sélectionnez votre domaine" />
+                                  </SelectTrigger>
+                                </FormControl>
+                                <SelectContent>
+                                  {majors.map((major) => (
+                                    <SelectItem key={major} value={major}>{major}</SelectItem>
+                                  ))}
+                                </SelectContent>
+                              </Select>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                    </div>
+
+                    <div className='hidden'>
+                    <FormField
+                          control={professionalInfoForm.control}
+                          name="major"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Domaine d&apos;études (Major)</FormLabel>
+                              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                <FormControl>
+                                  <SelectTrigger>
+                                    <SelectValue placeholder="Sélectionnez votre domaine" />
+                                  </SelectTrigger>
+                                </FormControl>
+                                <SelectContent>
+                                  {majors.map((major) => (
+                                    <SelectItem key={major} value={major}>{major}</SelectItem>
+                                  ))}
+                                </SelectContent>
+                              </Select>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                    </div>
 
                     <FormField
                       control={professionalInfoForm.control}
                       name="cv"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>CV (PDF, max 5MB)</FormLabel>
+                          <FormLabel>CV (format PDF)</FormLabel>
                           <FormControl>
                             <Input 
                               type="file" 
                               accept=".pdf"
-                              onChange={(e) => {
-                                const file = e.target.files?.[0];
-                                if (file) {
-                                  field.onChange(file);
-                                }
-                              }}
+                              onChange={(e) => field.onChange(e.target.files ? e.target.files[0] : null)}
                             />
                           </FormControl>
                           <FormMessage />
@@ -514,24 +594,25 @@ export default function EventRegisterForm() {
           </Card>
 
           <Card>
-          <CardContent className="p-6">
-            <h2 className="text-xl font-semibold text-primary mb-4">
-              Informations importantes
-            </h2>
-            <p className="text-sm text-muted-foreground mb-6">
-              Une fois le site finalisé, vous recevrez un email avec toutes les informations nécessaires, y compris vos comptes personnels. Merci de votre patience et de votre confiance.
-            </p>
-            <div className="flex justify-center">
-              <Image
-                src="/logo_check.svg"
-                alt="Illustration"
-                width={128}
-                height={128}
-              />
-            </div>
-          </CardContent>
-        </Card>
-
+            <CardContent className="p-6">
+              <h2 className="text-xl font-semibold text-primary mb-4">
+                À propos de nous
+              </h2>
+              <p className="text-sm text-muted-foreground mb-6">
+                Une fois le site finalisé, 
+                vous recevrez un email avec toutes les informations nécessaires,
+                y compris vos comptes personnels. Merci de votre patience et de votre confiance.
+              </p>
+              <div className="flex justify-center">
+                <Image
+                  src="/logo_check.svg"
+                  alt="Building illustration"
+                  width={128}
+                  height={128}
+                />
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </div>

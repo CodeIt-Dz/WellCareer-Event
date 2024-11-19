@@ -45,8 +45,8 @@ export class Backend {
             ...options,
             body: JSON.stringify(options.body),
             headers: {
-                ...options.headers,
-                'Content-Type': 'application/json'
+                ...options.headers
+            
             }
         })
         let data;
@@ -55,6 +55,7 @@ export class Backend {
         } catch(e) {
             data = null;
         }
+        console.log("data", data , "status", response.status)
         return { data, status: response.status }
     }
 
