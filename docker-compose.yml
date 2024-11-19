@@ -7,6 +7,7 @@ services:
     volumes:
       - ./backend:/app
       - ./backend/media/excel_files:/app/media/excel_files
+      - ./backend/media/cv_files:/app/media/cv_files
     ports:
       - "9013:8000"
     depends_on:
