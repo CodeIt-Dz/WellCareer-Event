@@ -1,15 +1,8 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
 import NextTopLoader from "nextjs-toploader";
-import Navbar from "@/components/navbar";
-// import { AvailableLanguageTag, languageTag } from "@/paraglide/runtime";
-import { Toaster } from "react-hot-toast";
-import Footer from "./(Sidebar)/Components/footer";
-import { useAuth } from "@/hooks/useAuth";
-import { getSession } from "@/data/session";
-
+import AuthWrapper from "./components/AuthWrapper";
 
 export const metadata: Metadata = {
   title: "WellCareer",
@@ -22,27 +15,14 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // const direction: Record<AvailableLanguageTag, "ltr" | "rtl"> = {
-  //   en: "ltr",
-  //   fr: "ltr",
-  // };
-
-  const { isAuthenticated } = useAuth() ;
-
   return (
-    // <html lang={languageTag()} dir={direction[languageTag()]} className="light">
     <html className="light">
       <body className="font-Axiforma">
         <Providers>
-          <header>
-            <NextTopLoader color="blue" showSpinner={false} />
-            <Toaster />
-          </header>
-          <div className="flex flex-col xl:mb-10">
-            <Navbar   />
-            <main>{children}</main>
-          </div>
-          <Footer />
+          <NextTopLoader color="blue" showSpinner={false} />
+          <AuthWrapper>
+            {children}
+          </AuthWrapper>
         </Providers>
       </body>
     </html>
