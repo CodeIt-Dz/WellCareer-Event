@@ -76,11 +76,7 @@ const DomainesExpertise = () => {
               <h1 className="xl:text-3xl text-xl font-bold">{category.title}</h1>
             </CardHeader>
             <CardBody className="xl:p-12 p-8">{category.description}</CardBody>
-            <CardFooter>
-              <span className="underline-offset-4 underline text-xl mx-auto text-primary font-bold group-hover:text-white">
-                More
-              </span>
-            </CardFooter>
+            
           </Card>
         ))}
       </div>

@@ -77,7 +77,7 @@ export default  function Navbar() {
               key={index}
               href={item.link}
               className={`block py-2 px-4 text-sm font-medium ${
-                pathname === item.link ? "text-black" : "text-gray-500 hover:text-white"
+                pathname === item.link ? "text-black" : "text-black hover:text-white"
               } transition duration-300 ease-in-out`}
               onClick={() => setIsMenuOpen(false)}
             >
