@@ -148,7 +148,7 @@ export default function EventRegisterForm() {
         }
       );
 
-      console.log(response)
+      //console.log(response)
 
       router.push('/')
   
@@ -162,7 +162,8 @@ export default function EventRegisterForm() {
       }
     } catch (error: any) {
       // Log error with detailed information
-      console.error("Error submitting data:", error?.response?.data || error.message);
+      router.push('/')
+     // console.error("Error submitting data:", error?.response?.data || error.message);
     }
   };
   

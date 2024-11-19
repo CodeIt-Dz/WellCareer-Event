@@ -20,9 +20,9 @@ export default  function Navbar() {
 
   const navBarItems = [
     { name: "Home", link: "#home" },
-    { name: "Services", link: "#services" },
     { name: "Domaine", link: "#domaine" },
-    { name: "Contact Us", link: "#contact" },
+    { name: "Services", link: "#services" },
+    { name: "Contact", link: "#contact" },
   ];
 
   const pathname = usePathname()
@@ -57,7 +57,7 @@ export default  function Navbar() {
           </div>
         </div>
         <Link href="/auth/register/" passHref>
-          <Button  size="lg" color="primary" radius="sm" className="hidden lg:inline text-md text-white font-bold px-8 py-2">Get in Touch</Button>
+          <Button  size="lg" color="primary" radius="sm" className="hidden lg:inline text-md text-white font-bold px-8 py-2">S&apos;inscrire</Button>
         </Link>
 
         <div className="flex items-center gap-2 flex-shrink-0">
@@ -86,7 +86,7 @@ export default  function Navbar() {
             
           ))}
           <Link href="/auth/register/" passHref>
-            <Button  size="lg"  radius="sm" className=" lg:hidden text-md text-primary bg-white font-bold px-6 mt-4 ">Get in Touch</Button>
+            <Button  size="lg"  radius="sm" className=" lg:hidden text-md text-primary bg-white font-bold px-6 mt-4 ">S&apos;inscrire</Button>
           </Link>
           
         </div>

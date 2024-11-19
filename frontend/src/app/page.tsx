@@ -60,21 +60,21 @@ export default  function Home() {
           </div>
           <div className="hidden lg:flex flex-col gap-8 w-1/2 p-8 ">
             <div className="border-3 border-[#A7A7A7]  text-[#8A8A8A] bg-white rounded-full flex w-fit py-3 px-14 text-lg font-bold ">Start your career</div>
-            <h1 className="text-5xl font-bold leading-[1.5]">Step into Our Salon and Transform Your <span className="text-primary">Future!</span></h1>
+            <h1 className="text-5xl font-bold leading-[1.5]">Découvrez notre plateforme et donnez un nouvel élan à votre<p className="text-primary"> Carrière !</p></h1>
             <div className="flex flex-col gap-4">
               <p className="font-semibold">Qui Sommes-nous?</p>
               <p className="text-[#09090999] bg-opacity-60 text-lg ">Well Career, filiale de Well Pharma, est un Organisme Privé Agréé de Placement de personnel fondée en 2020, dédié à sélectionner, développer et à connecter les meilleurs talents avec les entreprises en quête d&apos;excellence</p>
             </div>
             <Link href="/auth/register/" passHref>
-              <Button  size="lg" color="primary" radius="sm" className="text-3xl lg:text-xl lg:p-6 text-white font-bold w-1/3 p-8">Get in Touch</Button>
+              <Button  size="lg" color="primary" radius="sm" className="text-3xl lg:text-xl lg:p-6 text-white font-bold w-1/3 p-8">S&apos;inscrire</Button>
             </Link>
           </div>
           {/*mobile hero*/}
           <div className="lg:hidden bg-primary   w-full flex">
             <div className="w-1/2 text-white text-3xl font-bold flex flex-col ml-10 gap-14 mt-44 md:mt-24 ">
-              <p>Step into Our Salon and Transform Your Future!</p>
+              <p>Découvrez notre plateforme et donnez un nouvel élan à votre carrière !</p>
               <Link href="/auth/register/" passHref>
-                <Button  size="md"  radius="sm" className="text-medium text-primary bg-white font-bold mr-8 py-6">Get in Touch</Button>
+                <Button  size="md"  radius="sm" className="text-medium text-primary bg-white font-bold mr-8 py-6">S&apos;inscrire</Button>
               </Link>
             </div>
             <div className="w-1/2  flex mt-44 md:mt-4">
@@ -82,6 +82,24 @@ export default  function Home() {
             </div>
           </div>
         </section>
+        
+        {/*mission section */}
+        <section id="Mission">
+          <div className="m-12 flex flex-col gap-4 mt-28 ">
+              <h1 className="hidden xl:inline text-5xl font-bold pl-1">Notre mission</h1>
+              <h1 className="xl:hidden text-xl font-semibold mx-auto">Qui sommes-nous ?</h1>
+              <div className="rounded-2xl border-1 border-primary xl:p-14 p-6 pt-2 text-sm text-[#8A8A8A]  xl:text-2xl font-bold leading-relaxed ">
+                <div className="flex justify-end text-primary"><Icon path={mdiChatOutline} size={2} /></div>
+                <p>Well Career, en tant Qu&apos;Organisme Privé Agréé de Placement, Notre Mission est de sélectionner, développer et accompagner les professionnels pour qu&apos;ils s&apos;épanouissent dans leur parcours. Grâce à des processus de Recrutement Rigoureux, des Formations Ciblées et un Accompagnement Personnalisé, nous aidons chaque talent à trouver sa place dans un environnement où il pourra exceller. Notre Mission est d&apos;Etre un Partenaire de Confiance pour les Entreprises, En Répondant A Leurs Besoins De Compétences Et En Assurant Un Avenir Prometteur Aux Talents Que Nous Plaçons.</p>
+              </div>
+          </div>
+        </section>
+
+        <section id="domaine">
+          {/*Domain section */}
+          <DomainesExpertise></DomainesExpertise>
+        </section>
+
         {/*services section */}
         <section id="services" className="lg:mx-12 mt-20">
             {/* <div className=" p-8  mt-28">
@@ -184,28 +202,13 @@ export default  function Home() {
             />
           </div>
         </section>
-        {/*mission section */}
-        <section id="Mission">
-          <div className="m-12 flex flex-col gap-4 mt-28 ">
-              <h1 className="hidden xl:inline text-5xl font-bold pl-1">Notre mission</h1>
-              <h1 className="xl:hidden text-xl font-semibold mx-auto">Qui sommes-nous ?</h1>
-              <div className="rounded-2xl border-1 border-primary xl:p-14 p-6 pt-2 text-sm text-[#8A8A8A]  xl:text-2xl font-bold leading-relaxed ">
-                <div className="flex justify-end text-primary"><Icon path={mdiChatOutline} size={2} /></div>
-                <p>Well Career, en tant Qu&apos;Organisme Privé Agréé de Placement, Notre Mission est de sélectionner, développer et accompagner les professionnels pour qu&apos;ils s&apos;épanouissent dans leur parcours. Grâce à des processus de Recrutement Rigoureux, des Formations Ciblées et un Accompagnement Personnalisé, nous aidons chaque talent à trouver sa place dans un environnement où il pourra exceller. Notre Mission est d&apos;Etre un Partenaire de Confiance pour les Entreprises, En Répondant A Leurs Besoins De Compétences Et En Assurant Un Avenir Prometteur Aux Talents Que Nous Plaçons.</p>
-              </div>
-          </div>
-        </section>
 
-        <section id="domaine">
-          {/*Domain section */}
-          <DomainesExpertise></DomainesExpertise>
-        </section>
         <section id="contact">
 
           <div className="xl:m-12 xl:p-20 p-8 bg-primary lg:flex-row flex-wrap-reverse flex xl:rounded-3xl mt-28">
             <div className="lg:hidden flex w-full justify-center">
-              <Link href="/auth/register/" passHref>
-                <Button  size="md"  radius="sm" className="text-xl bg-white text-primary font-bold p-4 mt-16">Get in Touch</Button>
+              <Link href="https://wellpharmagroup.com/fr#contact" passHref>
+                <Button  size="md"  radius="sm" className="text-xl bg-white text-primary font-bold p-4 mt-16">Contact</Button>
               </Link>
               <Image
                 src="/arrow.png"
@@ -251,11 +254,11 @@ export default  function Home() {
               </div>
             </div>
             <div className="lg:w-1/2 w-full p-4">
-              <h1 className="lg:text-4xl text-xl  text-white font-bold leading-[1.8] mb-8 text-center">Step into Our Salon and Transform Your Future!</h1>
+              <h1 className="lg:text-4xl text-xl  text-white font-bold leading-[1.8] mb-8 text-center">Découvrez notre plateforme et donnez un nouvel élan à votre carrière !</h1>
               <p className="hidden xl:inline  text-lg  text-white">Well Career, filiale de Well Pharma, est un Organisme Prive agree de placement de personnel fondee  en 2020, dedie a selectionner, developper et a connecter les meilleurs talents avec les entreprises en quete excellence </p>
               <div className="hidden lg:flex">
-                <Link href="/auth/register/" passHref>
-                  <Button  size="lg"  radius="sm" className="text-3xl bg-white text-primary font-bold p-8 mt-20">Get in Touch</Button>
+                <Link href="https://wellpharmagroup.com/fr#contact" passHref>
+                  <Button  size="lg"  radius="sm" className="text-3xl bg-white text-primary font-bold p-8 mt-20">Contact</Button>
                 </Link>
                 <Image
                   src="/arrow.png"

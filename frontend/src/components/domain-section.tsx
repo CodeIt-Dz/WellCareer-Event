@@ -73,13 +73,11 @@ const DomainesExpertise = () => {
               <div className="border-none rounded-xl xl:p-4 p-2 bg-[#EAE9FF]">
                 <Icon path={category.icon} size={3} className="text-primary" />
               </div>
-              <h1 className="xl:text-3xl text-xl font-bold">{category.title}</h1>
+              <h1 className="xl:text-3xl text-xl text-center flex justify-start items-center font-bold">{category.title}</h1>
             </CardHeader>
             <CardBody className="xl:p-12 p-8">{category.description}</CardBody>
             <CardFooter>
-              <span className="underline-offset-4 underline text-xl mx-auto text-primary font-bold group-hover:text-white">
-                More
-              </span>
+              
             </CardFooter>
           </Card>
         ))}
