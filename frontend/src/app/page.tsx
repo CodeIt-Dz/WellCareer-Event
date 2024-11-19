@@ -207,8 +207,8 @@ export default  function Home() {
 
           <div className="xl:m-12 xl:p-20 p-8 bg-primary lg:flex-row flex-wrap-reverse flex xl:rounded-3xl mt-28">
             <div className="lg:hidden flex w-full justify-center">
-              <Link href="https://wellpharmagroup.com/fr#contact" passHref>
-                <Button  size="md"  radius="sm" className="text-xl bg-white text-primary font-bold p-4 mt-16">Contact</Button>
+              <Link href="/auth/register" passHref>
+                <Button  size="md"  radius="sm" className="text-xl bg-white text-primary font-bold p-4 mt-16">S&apos;inscrire</Button>
               </Link>
               <Image
                 src="/arrow.png"
@@ -257,8 +257,8 @@ export default  function Home() {
               <h1 className="lg:text-4xl text-xl  text-white font-bold leading-[1.8] mb-8 text-center">Découvrez notre plateforme et donnez un nouvel élan à votre carrière !</h1>
               <p className="hidden xl:inline  text-lg  text-white">Well Career, filiale de Well Pharma, est un Organisme Prive agree de placement de personnel fondee  en 2020, dedie a selectionner, developper et a connecter les meilleurs talents avec les entreprises en quete excellence </p>
               <div className="hidden lg:flex">
-                <Link href="https://wellpharmagroup.com/fr#contact" passHref>
-                  <Button  size="lg"  radius="sm" className="text-3xl bg-white text-primary font-bold p-8 mt-20">Contact</Button>
+                <Link href="/auth/register/" passHref>
+                  <Button  size="lg"  radius="sm" className="text-3xl bg-white text-primary font-bold p-8 mt-20">S&apos;inscrire</Button>
                 </Link>
                 <Image
                   src="/arrow.png"
