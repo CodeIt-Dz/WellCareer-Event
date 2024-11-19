@@ -40,6 +40,7 @@ class StudentViewSet(viewsets.ModelViewSet):
                 "Major",
                 "Education Level",
                 "Professional Interests",
+                "CV File"
             ]
             sheet.append(headers)
         else:
@@ -57,6 +58,7 @@ class StudentViewSet(viewsets.ModelViewSet):
             student_data.get('major'),
             student_data.get('education_level'),
             ", ".join(student_data.get('professional_interests', [])),  # Convert JSON to a string
+            student_data.get('cv'),  # Add CV file path
         ])
 
         # Save the workbook to the file
