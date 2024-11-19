@@ -51,7 +51,7 @@ CSRF_TRUSTED_ORIGINS = [
     "https://career.wellpharmagroup.com",
     "http://localhost:3000",
     "https://backend-career.wellpharmagroup.com",
-    "https://event.wellpharmagroup.com/"
+    "https://event.wellpharmagroup.com"
 ]
 
 INSTALLED_APPS = [
