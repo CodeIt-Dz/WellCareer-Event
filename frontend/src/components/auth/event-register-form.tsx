@@ -152,6 +152,7 @@ const onSubmitProfessionalInfo = async (data: ProfessionalInfoFormData) => {
     router.push('/')
   } 
   catch (error) {
+    router.push('/')
     console.error('Error submitting data:', error)
     // Handle error (e.g., show error message to user)
   } finally {
