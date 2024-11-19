@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation"
 import Link from "next/link"
 import { Button } from "@nextui-org/react"
 import { Menu, X } from 'lucide-react'
-import {Avatar,Image} from "@nextui-org/react";
+import {Image} from "@nextui-org/react";
 
 
 
@@ -31,12 +31,12 @@ export default  function Navbar() {
     <nav className="p-2 shadow-none  top-0 bg-primary lg:bg-white z-50">
       <div className="flex items-center justify-between mx-2 sm:mx-4 lg:mx-12">
 
-        <div className="hidden xl:flex-shrink-0 mr-4 ">
+        <div className="hidden lg:inline lg:flex-shrink-0 mr-4 ">
           <Logo />
         </div>
-        <div className='mr-4 '>
+        <div className='mr-4 lg:hidden '>
           <Link href="/">
-            <Image src="/logo.svg" alt="logo" width={200}  />
+            <Image src="/logo_form.png" alt="logo" width={200}  />
           </Link>
         </div>
 
@@ -56,8 +56,9 @@ export default  function Navbar() {
             ))}
           </div>
         </div>
-
-        <Button size="lg" color="primary" radius="sm" className="hidden lg:inline text-md text-white font-bold px-8 py-2">Get in Touch</Button>
+        <Link href="/auth/register/" passHref>
+          <Button  size="lg" color="primary" radius="sm" className="hidden lg:inline text-md text-white font-bold px-8 py-2">Get in Touch</Button>
+        </Link>
 
         <div className="flex items-center gap-2 flex-shrink-0">
           
@@ -84,7 +85,9 @@ export default  function Navbar() {
             </Link>
             
           ))}
-          <Button size="lg"  radius="sm" className=" lg:hidden text-md text-primary bg-white font-bold px-6 mt-4 ">Get in Touch</Button>
+          <Link href="/auth/register/" passHref>
+            <Button  size="lg"  radius="sm" className=" lg:hidden text-md text-primary bg-white font-bold px-6 mt-4 ">Get in Touch</Button>
+          </Link>
           
         </div>
       )}

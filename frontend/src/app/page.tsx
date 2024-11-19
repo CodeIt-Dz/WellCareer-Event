@@ -1,11 +1,13 @@
 "use client"
-import {  Button, Card, CardBody, CardFooter, CardHeader, Image } from "@nextui-org/react";
+import {  Button, Card, CardBody, CardHeader, Image } from "@nextui-org/react";
 import React from "react";
 import Icon from "@mdi/react";
-import {  mdiArrowBottomRight, mdiArrowLeft, mdiArrowRight, mdiBullhorn, mdiChatOutline, mdiEmoticonHappy, mdiEmoticonHappyOutline } from "@mdi/js";
-import { TabsView, TabsHead, TabsPage } from "./components/tabs";
-import Navbar from "@/components/navbar";
-
+import {  mdiAccountBoxPlusOutline, mdiAccountCash, mdiAccountGroup, mdiChatOutline, mdiClipboardList, mdiCurrencyUsd, mdiEmoticonHappy, mdiFileDocument, mdiHandshake, mdiHelpCircleOutline, mdiHomeCity, mdiShield, mdiTruckDelivery } from "@mdi/js";
+import Link from "next/link";
+import HoverDisplay from "@/components/hover-card";
+import {
+  mdiAccountSearch} from '@mdi/js';
+import DomainesExpertise from "@/components/domain-section";
 
 
 
@@ -18,7 +20,6 @@ export default  function Home() {
     
     <>
       <div>
-      <Navbar/>
 
         <section
           id="home"
@@ -34,7 +35,7 @@ export default  function Home() {
                         <p className="font-semibold text-gray-400 text-xl">Accompagnement Personnalisé</p>
                       </CardHeader>
                       <CardBody>
-                        <p className="text-xs text-gray-400 font-bold">selectionner, developper et a connecter les meilleurs talents avec les etnreprises a quete d excellence.</p>
+                        <p className="text-xs text-gray-400 font-bold">sélectionner, développer et à connecter les meilleurs talents avec les entreprises à quête d&apos;excellence.</p>
                       </CardBody>
                     </Card>
                 </Card> 
@@ -62,15 +63,19 @@ export default  function Home() {
             <h1 className="text-5xl font-bold leading-[1.5]">Step into Our Salon and Transform Your <span className="text-primary">Future!</span></h1>
             <div className="flex flex-col gap-4">
               <p className="font-semibold">Qui Sommes-nous?</p>
-              <p className="text-[#09090999] bg-opacity-60 text-lg ">Well Career, filiale de Well Pharma, est un Organisme Prive agree de placement de personnel fondee  en 2020, dedie a selectionner, developper et a connecter les meilleurs talents avec les entreprises en quete excellence</p>
+              <p className="text-[#09090999] bg-opacity-60 text-lg ">Well Career, filiale de Well Pharma, est un Organisme Privé Agréé de Placement de personnel fondée en 2020, dédié à sélectionner, développer et à connecter les meilleurs talents avec les entreprises en quête d&apos;excellence</p>
             </div>
-            <Button size="lg" color="primary" radius="sm" className="text-3xl lg:text-xl lg:p-6 text-white font-bold w-1/3 p-8">Get in Touch</Button>
+            <Link href="/auth/register/" passHref>
+              <Button  size="lg" color="primary" radius="sm" className="text-3xl lg:text-xl lg:p-6 text-white font-bold w-1/3 p-8">Get in Touch</Button>
+            </Link>
           </div>
           {/*mobile hero*/}
           <div className="lg:hidden bg-primary   w-full flex">
             <div className="w-1/2 text-white text-3xl font-bold flex flex-col ml-10 gap-14 mt-44 md:mt-24 ">
               <p>Step into Our Salon and Transform Your Future!</p>
-              <Button size="md"  radius="sm" className="text-medium text-primary bg-white font-bold mr-8 py-6">Get in Touch</Button>
+              <Link href="/auth/register/" passHref>
+                <Button  size="md"  radius="sm" className="text-medium text-primary bg-white font-bold mr-8 py-6">Get in Touch</Button>
+              </Link>
             </div>
             <div className="w-1/2  flex mt-44 md:mt-4">
               <Image src="/student-portrait.png" alt="bullhorn" className="max-h-full" />
@@ -78,14 +83,14 @@ export default  function Home() {
           </div>
         </section>
         {/*services section */}
-        <section id="services">
-            <div className=" p-8  mt-28">
+        <section id="services" className="lg:mx-12 mt-20">
+            {/* <div className=" p-8  mt-28">
             <TabsView >
-              {/* Tab Header */}
+               Tab Header 
               <div className="flex ">
                 <TabsHead tabs={["Gestion des carrieres", "Recrutement et selection", "Relations de travail","Insertion professionnelle"]} className="lg:mb-8 lg:ml-12 lg:mr-8 ml-8 mr-4 w-1/2" />
 
-                {/* Tab Content */}
+                {/* Tab Content 
                 
                 <TabsPage>
                   {(activeTab) => (
@@ -99,91 +104,109 @@ export default  function Home() {
                 </TabsPage>
               </div>
             </TabsView>
+          </div> 
+          */}
+          <div>
+            <h1 className="lg:text-5xl text-xl font-bold mb-4">Nos services</h1>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <HoverDisplay 
+              title="Recrutement et sélection" 
+              description="Processus de recherche et sélection des meilleurs talents." 
+              icon={mdiAccountSearch} 
+              width="w-full"
+            />
+            <HoverDisplay 
+              title="Gestion de la performance" 
+              description="Suivi et évaluation de la performance des employés." 
+              icon={mdiClipboardList} 
+              width="w-full"
+            />
+            <HoverDisplay 
+              title="Gestion des carrières" 
+              description="Accompagnement des employés dans le développement de leur carrière." 
+              icon={mdiAccountGroup} 
+              width="w-full"
+            />
+            <HoverDisplay 
+              title="Gestion de la paie et des avantages sociaux" 
+              description="Gestion des rémunérations, primes et avantages sociaux." 
+              icon={mdiCurrencyUsd} 
+              width="w-full"
+            />
+            <HoverDisplay 
+              title="Relations de travail" 
+              description="Gestion des relations entre employeurs et employés." 
+              icon={mdiAccountCash} 
+              width="w-full"
+            />
+            <HoverDisplay 
+              title="Gestion des ressources humaines stratégiques" 
+              description="Alignement des stratégies RH avec les objectifs organisationnels." 
+              icon={mdiHandshake} 
+              width="w-full"
+            />
+            <HoverDisplay 
+              title="Prise en charge des formalités administratives liées à l'hébergement" 
+              description="Aide à l'administration des démarches pour l'hébergement." 
+              icon={mdiHomeCity} 
+              width="w-full"
+            />
+            <HoverDisplay 
+              title="Assistance pour l'obtention des autorisations nécessaires lors de l'expatriation" 
+              description="Accompagnement dans l'obtention des documents nécessaires." 
+              icon={mdiFileDocument} 
+              width="w-full"
+            />
+            <HoverDisplay 
+              title="Support à l'intégration" 
+              description="Assistance à l'intégration des nouveaux employés." 
+              icon={mdiShield} 
+              width="w-full"
+            />
+            <HoverDisplay 
+              title="Placement temporaire / permanent du personnel" 
+              description="Services de placement pour des missions temporaires ou permanentes." 
+              icon={mdiHelpCircleOutline} 
+              width="w-full"
+            />
+            <HoverDisplay 
+              title="Insertion professionnelle" 
+              description="Aide à l'intégration professionnelle des individus dans le marché du travail." 
+              icon={mdiAccountBoxPlusOutline} 
+              width="w-full"
+            />
+            <HoverDisplay 
+              title="Suivi post-placement" 
+              description="Suivi des candidats après leur placement pour assurer leur réussite." 
+              icon={mdiTruckDelivery} 
+              width="w-full"
+            />
           </div>
         </section>
         {/*mission section */}
         <section id="Mission">
           <div className="m-12 flex flex-col gap-4 mt-28 ">
-            <h1 className="hidden xl:inline text-5xl font-bold pl-1">Notre mission</h1>
-            <h1 className="xl:hidden text-xl font-semibold mx-auto">Qui sommes-nous ?</h1>
-            <div className="rounded-2xl border-1 border-primary xl:p-14 p-6 pt-2 text-sm text-[#8A8A8A]  xl:text-2xl font-bold leading-relaxed ">
-              <div className="flex justify-end text-primary">
-                <Icon path={mdiChatOutline} size={2} />
+              <h1 className="hidden xl:inline text-5xl font-bold pl-1">Notre mission</h1>
+              <h1 className="xl:hidden text-xl font-semibold mx-auto">Qui sommes-nous ?</h1>
+              <div className="rounded-2xl border-1 border-primary xl:p-14 p-6 pt-2 text-sm text-[#8A8A8A]  xl:text-2xl font-bold leading-relaxed ">
+                <div className="flex justify-end text-primary"><Icon path={mdiChatOutline} size={2} /></div>
+                <p>Well Career, en tant Qu&apos;Organisme Privé Agréé de Placement, Notre Mission est de sélectionner, développer et accompagner les professionnels pour qu&apos;ils s&apos;épanouissent dans leur parcours. Grâce à des processus de Recrutement Rigoureux, des Formations Ciblées et un Accompagnement Personnalisé, nous aidons chaque talent à trouver sa place dans un environnement où il pourra exceller. Notre Mission est d&apos;Etre un Partenaire de Confiance pour les Entreprises, En Répondant A Leurs Besoins De Compétences Et En Assurant Un Avenir Prometteur Aux Talents Que Nous Plaçons.</p>
               </div>
-              <p>
-                Well Career, en tant Qu&apos;Organisme Privé Agréé de placement, Notre Mission est de
-                sélectionner, développer et accompagner les professionnels pour qu&apos;ils s&apos;épanouissent
-                dans leur parcours. Grâce à des processus de Recrutement Rigoureux, de Formations
-                Ciblées et un Accompagnement Personnalisé, nous aidons chaque talent à trouver sa
-                place dans un environnement où il pourra exceller. Notre Mission est d&apos;Être un Partenaire
-                de Confiance pour les Entreprises, En Répondant À Leurs Besoins De compétences Et En
-                Assurant Un Avenir Prometteur Aux Talents que Nous plaçons.
-              </p>
-            </div>
           </div>
         </section>
 
         <section id="domaine">
           {/*Domain section */}
-          <div className="mt-28 flex flex-col gap-4">
-            <div className="flex justify-between mx-16">
-              <h1 className="xl:text-5xl text-xl mx-auto font-bold ">Domaines d expertise</h1>
-              <div className="hidden xl:inline">
-                <Button radius="full" size="lg"><Icon path={mdiArrowLeft} size={2}/></Button>
-                <Button radius="full" size="lg"><Icon path={mdiArrowRight} size={2}/></Button>
-              </div>
-            </div>
-            <div className="flex xl:flex-nowrap flex-wrap justify-around gap-4 mx-12">
-              <Card  className="bg-white border-primary  border-1 hover:scale-105 transform transition duration-300 hover:shadow-lg hover:text-white hover:bg-primary group">
-                <CardHeader className="flex flex-col p-4 gap-8">
-                  <div className="border-none rounded-xl xl:p-4 p-2 bg-[#EAE9FF] ">
-                    <Image src="/bullhorn.png"  alt="bullhorn" />
-                  </div>
-                  <h1 className="xl:text-3xl text-xl font-bold ">Marketing</h1>
-                </CardHeader>
-                <CardBody className="xl:p-12 p-8">
-                  lorem ipsum is simply dummy text of the printing and tpyesetting industry.lorem has been the induatrys standard
-                </CardBody>
-                <CardFooter>
-                  <span className="underline-offset-4 underline text-xl mx-auto text-primary font-bold group-hover:text-white">More</span>
-                </CardFooter>
-              </Card>
-              <Card  className="bg-white border-primary border-1 hover:scale-105 transform transition duration-300 hover:shadow-lg hover:text-white hover:bg-primary group">
-                <CardHeader className="flex flex-col p-4 gap-8">
-                  <div className="border-none rounded-xl p-4 bg-[#EAE9FF] ">
-                    <Image src="/bullhorn.png"  alt="bullhorn" />
-                  </div>
-                  <h1 className="xl:text-3xl text-xl font-bold ">Marketing</h1>
-                </CardHeader>
-                <CardBody className="p-12">
-                  lorem ipsum is simply dummy text of the printing and tpyesetting industry.lorem has been the industrys standard
-                </CardBody>
-                <CardFooter>
-                  <span className="underline-offset-4 underline text-xl mx-auto text-primary font-bold group-hover:text-white">More</span>
-                </CardFooter>
-              </Card>
-              <Card  className="bg-white border-primary border-1 hover:scale-105 transform transition duration-300 hover:shadow-lg hover:text-white hover:bg-primary group">
-                <CardHeader className="flex flex-col p-4 gap-8">
-                  <div className="border-none rounded-xl p-4 bg-[#EAE9FF] ">
-                    <Image src="/bullhorn.png"  />
-                  </div>
-                  <h1 className="text-3xl font-bold ">Marketing</h1>
-                </CardHeader>
-                <CardBody className="p-12">
-                  lorem ipsum is simply dummy text of the printing and tpyesetting industry.lorem has been the industrys standard
-                </CardBody>
-                <CardFooter>
-                  <span className="underline-offset-4 underline text-xl mx-auto text-primary font-bold group-hover:text-white">More</span>
-                </CardFooter>
-              </Card>
-            </div>
-          </div>
+          <DomainesExpertise></DomainesExpertise>
         </section>
         <section id="contact">
 
           <div className="xl:m-12 xl:p-20 p-8 bg-primary lg:flex-row flex-wrap-reverse flex xl:rounded-3xl mt-28">
             <div className="lg:hidden flex w-full justify-center">
-              <Button size="md"  radius="sm" className="text-xl bg-white text-primary font-bold p-4 mt-16">Get in Touch</Button>
+              <Link href="/auth/register/" passHref>
+                <Button  size="md"  radius="sm" className="text-xl bg-white text-primary font-bold p-4 mt-16">Get in Touch</Button>
+              </Link>
               <Image
                 src="/arrow.png"
                 height={150}
@@ -231,7 +254,9 @@ export default  function Home() {
               <h1 className="lg:text-4xl text-xl  text-white font-bold leading-[1.8] mb-8 text-center">Step into Our Salon and Transform Your Future!</h1>
               <p className="hidden xl:inline  text-lg  text-white">Well Career, filiale de Well Pharma, est un Organisme Prive agree de placement de personnel fondee  en 2020, dedie a selectionner, developper et a connecter les meilleurs talents avec les entreprises en quete excellence </p>
               <div className="hidden lg:flex">
-                <Button size="lg"  radius="sm" className="text-3xl bg-white text-primary font-bold p-8 mt-20">Get in Touch</Button>
+                <Link href="/auth/register/" passHref>
+                  <Button  size="lg"  radius="sm" className="text-3xl bg-white text-primary font-bold p-8 mt-20">Get in Touch</Button>
+                </Link>
                 <Image
                   src="/arrow.png"
                   height={200}

@@ -1,6 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* global.css */
+html {
+  scroll-behavior: smooth; /* Enables smooth scrolling */
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

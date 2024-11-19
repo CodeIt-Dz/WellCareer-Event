@@ -27,6 +27,7 @@ import { Button } from "@/components/ui/button"
 import { format } from "date-fns"
 import { cn } from "@/lib/utils"
 import { Backend } from '@/lib/helper'
+import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
 const personalInfoSchema = z.object({
@@ -168,7 +169,9 @@ export default function EventRegisterForm() {
     <div className='h-full w-full bg-primary p-6'>
       <div className='mx-auto w-full max-w-6xl'>
         <div className="mb-4 mt-2">
-          <Image src="/logo_form.png" alt="logo" width={200} height={50} className="text-white" />
+          <Link href="/">
+            <Image src="/logo_form.png" alt="logo" width={200} height={50} className="text-white" />
+          </Link>
         </div>
 
         <div className='grid md:grid-cols-[1fr,300px] gap-6'>
