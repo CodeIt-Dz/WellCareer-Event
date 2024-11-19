@@ -57,14 +57,23 @@ type ProfessionalInfoFormData = z.infer<typeof professionalInfoSchema>
 const majors = [
   "Informatique",
   "Génie Civil",
+  "Génie Électrique",
+  "Génie Mécanique",
+  "Génie Industriel",
+  "Architecture",
+  "Génie des Procédés",
+  "Electronique",
+  "Biologie",
+  "Chimie",
+  "Physique",
+  "Télécommunications",
+  "Electrotechnique",
+  "Energétique",
   "Médecine",
   "Droit",
   "Économie",
   "Sciences Politiques",
-  "Psychologie",
-  "Biologie",
-  "Chimie",
-  "Physique"
+  "Psychologie"
 ]
 
 const educationLevels = [
@@ -75,18 +84,25 @@ const educationLevels = [
   "Bac + 5"
 ]
 
+
 const professionalInterests = [
-  "Développement Web",
-  "Intelligence Artificielle",
-  "Cybersécurité",
-  "Gestion de Projet",
-  "Marketing Digital",
-  "Finance",
-  "Ressources Humaines",
-  "Design Graphique",
+  "Pharmacologie Clinique",
+  "Biotechnologie Médicale",
+  "Recherche en Thérapie Génomique",
+  "Chimie Médicinale",
+  "Développement de Vaccins",
+  "Contrôle de Qualité Pharmaceutique",
+  "Épidémiologie et Santé Publique",
+  "Nanomédecine",
+  "Production de Médicaments",
+  "Gestion des Essais Cliniques",
   "Recherche Scientifique",
-  "Entrepreneuriat"
-]
+  "Marketing",
+  "Finance",
+  "Gestion de Projet"
+
+];
+
 
 export default function EventRegisterForm() {
   const [step, setStep] = useState(1)
