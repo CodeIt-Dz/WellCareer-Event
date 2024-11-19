@@ -24,6 +24,8 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { CheckIcon } from 'lucide-react'
 import { sendDataToBackend } from '@/data/profile'
+import axios from 'axios'
+import { BASE_URL } from '@/lib/constant'
 
 const personalInfoSchema = z.object({
   last_name: z.string().min(2, "Le nom doit contenir au moins 2 caractères"),
@@ -125,7 +127,7 @@ export default function EventRegisterForm() {
 
 
   const [submissionInProgress, setSubmissionInProgress] = useState(false)
-const onSubmitProfessionalInfo = async (data: ProfessionalInfoFormData) => {
+const onSubmitProfessionalInfo =  (data: ProfessionalInfoFormData) => {
   if (submissionInProgress) return // Prevent multiple submissions
 
   setSubmissionInProgress(true) // Set flag to true to prevent multiple submissions
@@ -148,7 +150,12 @@ const onSubmitProfessionalInfo = async (data: ProfessionalInfoFormData) => {
   finalData.append('cv', data.cv);
 
   try {
-    await sendDataToBackend(finalData)
+    
+    const response =  axios.post(`${BASE_URL}/students/`, finalData, {
+      headers: {
+          'Content-Type': 'multipart/form-data',
+      }
+  });
     router.push('/')
   } 
   catch (error) {
