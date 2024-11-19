@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    container_name: backend
+    volumes:
+      - ./backend:/app
+      - ./backend/media/excel_files:/app/media/excel_files
+    ports:
+      - "9013:8000"
+    depends_on:
+      - db
+
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    volumes:
+      - ./frontend:/app
+    ports:
+      - "4013:3000"
+
+  db:
+    image: nouchka/sqlite3:latest
+    container_name: db
+    volumes:
+      - ./backend/db.sqlite:/db/db.sqlite

@@ -20,6 +20,7 @@ export default  function Home() {
     
     <>
       <div>
+
         <section
           id="home"
           className=" h-[90dvh] flex xl:mt-10"
@@ -77,7 +78,7 @@ export default  function Home() {
               </Link>
             </div>
             <div className="w-1/2  flex mt-44 md:mt-4">
-              <Image src="/student-portrait.png" className="max-h-full" />
+              <Image src="/student-portrait.png" alt="bullhorn" className="max-h-full" />
             </div>
           </div>
         </section>
@@ -94,7 +95,7 @@ export default  function Home() {
                 <TabsPage>
                   {(activeTab) => (
                     <div className=" bg-gray-1R00 rounded-xl w-1/2">
-                      {activeTab === 0 && <div className="flex flex-col "> <div className="flex justify-center h-1/2"> <Image src="/office-worker.png" className="p-6 max-md:hidden"/>  </div> <h1 className="xl:text-4xl md:text-2xl max-md:text-medium max-md:mt-24 font-bold my-4">Gestion des Carrieres</h1> <p className="lg:text-xl max-md:text-sm max-md:align-middle text-[#8A8A8A]">selectionner, developper et a connecter les meilleurs talents avec les entreprises en quete d excellence</p></div>}
+                      {activeTab === 0 && <div className="flex flex-col "> <div className="flex justify-center h-1/2"> <Image src="/office-worker.png" alt="office" className="p-6 max-md:hidden"/>  </div> <h1 className="xl:text-4xl md:text-2xl max-md:text-medium max-md:mt-24 font-bold my-4">Gestion des Carrieres</h1> <p className="lg:text-xl max-md:text-sm max-md:align-middle text-[#8A8A8A]">selectionner, developper et a connecter les meilleurs talents avec les entreprises en quete d excellence</p></div>}
                       {activeTab === 1 && <p>Recrutement et selection</p>}
                       {activeTab === 2 && <p>Relations de travail</p>}
                       {activeTab === 3 && <p>Recrutement et selection</p>}
@@ -194,6 +195,7 @@ export default  function Home() {
               </div>
           </div>
         </section>
+
         <section id="domaine">
           {/*Domain section */}
           <DomainesExpertise></DomainesExpertise>

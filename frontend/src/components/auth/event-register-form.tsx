@@ -28,6 +28,7 @@ import { format } from "date-fns"
 import { cn } from "@/lib/utils"
 import { Backend } from '@/lib/helper'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 const personalInfoSchema = z.object({
   last_name: z.string().min(2, "Le nom doit contenir au moins 2 caractères"),
@@ -89,6 +90,8 @@ export default function EventRegisterForm() {
   const [step, setStep] = useState(1)
   const [personalInfo, setPersonalInfo] = useState<PersonalInfoFormData | null>(null)
 
+  const router = useRouter()
+
   const personalInfoForm = useForm<PersonalInfoFormData>({
     resolver: zodResolver(personalInfoSchema),
     defaultValues: {
@@ -144,9 +147,14 @@ export default function EventRegisterForm() {
           body: finalData
         }
       );
+
+      console.log(response)
   
       if (response?.status === 200) {
         console.log("Submission successful:", response.data);
+
+        router.push('/')
+        
       } else {
         console.warn("Unexpected response status:", response.status);
       }
@@ -384,8 +392,8 @@ export default function EventRegisterForm() {
                         Domaines d&apos;intérêt professionnel
                       </h3>
                       <FormField
-                      control={professionalInfoForm.control}
-                      name="professional_interests"
+                      control={personalInfoForm.control}
+                      name="email"
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel> Pros </FormLabel>
@@ -395,9 +403,9 @@ export default function EventRegisterForm() {
                           <FormMessage />
                         </FormItem>
                       )}
-                    />
-                     
+                    />   
                     </div>
+                    
                     <div>
                         <h3 className="text-lg font-medium mb-4">
                           intérêt professionnel
