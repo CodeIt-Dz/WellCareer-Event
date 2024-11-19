@@ -30,7 +30,8 @@ ALLOWED_HOSTS = ['86.38.217.190','127.0.0.1',
                  'localhost','pharma-back.codeitdz.com',
                  'career.wellpharmagroup.com',
                  '172.20.10.3','192.168.248.7','docker-back-1'
-                 "backend-career.wellpharmagroup.com"
+                 "backend-career.wellpharmagroup.com",
+                 "event.wellpharmagroup.com"
                  ]# add front url
 
 
@@ -41,14 +42,16 @@ CORS_ALLOWED_ORIGINS = [
     "https://pharma-back.codeitdz.com",
     "https://career.wellpharmagroup.com",
     "http://localhost:3000",
-    "https://backend-career.wellpharmagroup.com"
+    "https://backend-career.wellpharmagroup.com",
+    "https://event.wellpharmagroup.com/"
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     "https://pharma-back.codeitdz.com",
     "https://career.wellpharmagroup.com",
     "http://localhost:3000",
-    "https://backend-career.wellpharmagroup.com"
+    "https://backend-career.wellpharmagroup.com",
+    "https://event.wellpharmagroup.com/"
 ]
 
 INSTALLED_APPS = [
