@@ -50,12 +50,18 @@ const DomainesExpertise = () => {
         <h1 className="xl:text-5xl text-xl xl:ml-0 mx-auto font-bold">Domaines d&apos;expertise</h1>
         
         {/* Display arrows on all screen sizes */}
-        <div className="flex gap-2">
-          <Button radius="full" size="lg" onClick={handlePrev}>
+        <div className="flex  gap-2">
+          <Button radius="full" size="lg" className="hidden md:inline " onClick={handlePrev}>
             <Icon path={mdiArrowLeft} size={2} />
           </Button>
-          <Button radius="full" size="lg" onClick={handleNext}>
+          <Button radius="full" size="sm" className="md:hidden " onClick={handlePrev}>
+            <Icon path={mdiArrowLeft} size={1} />
+          </Button>
+          <Button radius="full" size="lg" className="hidden md:inline" onClick={handleNext}>
             <Icon path={mdiArrowRight} size={2} />
+          </Button>
+          <Button radius="full" size="sm" className="md:hidden" onClick={handleNext}>
+            <Icon path={mdiArrowRight} size={1} />
           </Button>
         </div>
       </div>

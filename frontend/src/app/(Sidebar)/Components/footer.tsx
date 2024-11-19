@@ -46,7 +46,7 @@ const Footer = () => {
           </div>
           <div className='flex flex-col gap-2'>
             <p className='max-sm:text-sm'>E-mail</p>
-            <p className='max-sm:text-[9px]'>l.ziane@wellpharmagroup.com</p>
+            <p className='max-[400px]:text-[5px] max-sm:text-[9px]'>l.ziane@wellpharmagroup.com</p>
           </div>
         </div>
       </div>  
