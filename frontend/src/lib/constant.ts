@@ -1,1 +1,1 @@
-export const BASE_URL = process.env.BASE_URL ||  "https://backend-career.wellpharmagroup.com/api";
+export const BASE_URL = process.env.BASE_URL ||   "https://backend-career.wellpharmagroup.com/api";

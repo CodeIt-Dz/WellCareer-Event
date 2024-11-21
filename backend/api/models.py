@@ -60,7 +60,8 @@ class Student(models.Model):
     major = models.CharField(max_length=100, null=True, blank=True)
     education_level = models.CharField(max_length=100, null=True, blank=True)
     professional_interests = models.JSONField(null=True, blank=True)
-    cv = models.FileField(upload_to='cv_files/', null=True, blank=True)  # New field
+    cv = models.FileField(upload_to='cv_files/', null=True, blank=True)  
+    email = models.EmailField(null=True, blank=True)
 
     def __str__(self):
         return f"{self.first_name or ''} {self.last_name} Student"
