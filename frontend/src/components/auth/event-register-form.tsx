@@ -48,7 +48,7 @@ const professionalInfoSchema = z.object({
   professional_interests: z.array(z.string()).nonempty("Veuillez sélectionner au moins un domaine d'intérêt"),
   cv: z.instanceof(File).refine((file) => file.type === 'application/pdf', {
     message: "Le fichier doit être au format PDF",
-  }),
+  }).nullish(),
 })
 
 type PersonalInfoFormData = z.infer<typeof personalInfoSchema>
@@ -163,7 +163,10 @@ const onSubmitProfessionalInfo =  (data: ProfessionalInfoFormData) => {
   finalData.append('education_level', data.education_level);
   finalData.append('professional_interests', JSON.stringify(data.professional_interests));
   console.log(data.cv);
-  finalData.append('cv', data.cv);
+  if(data.cv){
+    finalData.append('cv', data.cv);
+
+  }
 
   try {
     
